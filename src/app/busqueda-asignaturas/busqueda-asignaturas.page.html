@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/home">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-searchbar placeholder="Buscar Asignatura..."  animated (ionChange)="buscarAsignatura ($event)"></ion-searchbar>
+      <ion-button>
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>Filtros</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <ion-item>
+          <ion-label>Tematica</ion-label>
+          
+        </ion-item>
+      </ion-card-content>
+    </ion-card>  
+
+    <ion-list>
+      <ion-card >
+        <ion-card-header>
+          <ion-card-title>Nombre</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>
+            Tematicas
+          </ion-label>
+        </ion-card-content>
+        <ion-button (click) = "infoAsignatura()">
+          Ver más
+          <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

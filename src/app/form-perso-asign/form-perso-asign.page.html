@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formularioPersoAsignaturas</ion-title>
+    <ion-button (click)="closeModal()" href="/home" >
+      Cerrar
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Hola! Con el fin de brindarte un mejor servicio te proponemos llenar este formulario con tus gustos
+        y preferencias. En caso de que no lo desees puedes darle click a "Cerrar".
+      </ion-label>
+    </ion-item>
+
+    <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
+  </div>
+</ion-content>

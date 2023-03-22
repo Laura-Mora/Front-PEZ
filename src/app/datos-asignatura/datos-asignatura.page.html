@@ -1,0 +1,211 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/busqueda-asignaturas']">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Asignatura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>NOMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Descripción
+        Horarios
+        Profesores
+        Tematicas
+        Modalidad
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>Cuentanos tu opinión de la asignatura</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+          <ion-label>¿Considera que aprendió en la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las temáticas abordadas cumplieron con lo que requería? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las estrategias pedagógicas llevadas por el profesor fueron de su agrado? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las actividades propias de la asignatura realizadas fueron de su agrado? (Ejm: Talleres, proyectos, parciales...) </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Que nivel de complejidad le asignaría la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="Medio">
+              <ion-item>
+                <ion-label>Alto</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Medio</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Bajo</ion-label>
+                <ion-radio slot="end" value="bajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Fue de su agrado el profesor? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿La asignatura le sirvió para la vida o para el trabajo? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Vida</ion-label>
+                <ion-radio slot="end" value="vida"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Trabajo</ion-label>
+                <ion-radio slot="end" value="trabajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera que la carga de trabajo para la asignatura es adecuada? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Que nivel de exigencia le asignaría la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="Medio">
+              <ion-item>
+                <ion-label>Alto</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Medio</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Bajo</ion-label>
+                <ion-radio slot="end" value="bajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera que las calificaciones fueron entregadas a tiempo? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera oportuna la retroalimentación dada a las diferentes calificaciones obtenidas? </ion-label>
+          <ion-list>
+            <ion-radio-group value="si">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="no"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Qué tanto incidió el profesor en la elección de esta asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="Mucho">
+              <ion-item>
+                <ion-label>Mucho</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Poco</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Nada</ion-label>
+                <ion-radio slot="end" value="bajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>Por favor deje un comentario sobre la asignatura para que los demás estudiantes se puedan dar una guía de esta. </ion-label>
+          <ion-item>
+            <ion-input placeholder="Comentario"></ion-input>
+          </ion-item>
+          <ion-button (click) = "guardarOpinion()">
+            Guardar Opinion
+            <ion-icon  slot="start" name="star"></ion-icon>
+          </ion-button>
+      </ion-card-content>
+    </ion-card>  
+  </div>
+</ion-content>

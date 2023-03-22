@@ -8,8 +8,32 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'suge-asignaturas',
+    loadChildren: () => import('./suge-asignaturas/suge-asignaturas.module').then( m => m.SugeAsignaturasPageModule)
+  },
+  {
+    path: 'busqueda-asignaturas',
+    loadChildren: () => import('./busqueda-asignaturas/busqueda-asignaturas.module').then( m => m.BusquedaAsignaturasPageModule)
+  },
+  {
+    path: 'datos-asignatura',
+    loadChildren: () => import('./datos-asignatura/datos-asignatura.module').then( m => m.DatosAsignaturaPageModule)
+  },
+  {
+    path: 'form-perso-asign',
+    loadChildren: () => import('./form-perso-asign/form-perso-asign.module').then( m => m.FormPersoAsignPageModule)
   },
 ];
 
