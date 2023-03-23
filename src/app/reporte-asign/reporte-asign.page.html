@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/home-directores">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Reporte de asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Hola! Con el fin apoyar los procesos de evaluación de los programas de maestría, aquí puedes consultar 
+        la perspectiva de las asignturas que han tenido los estudiantes.  
+      </ion-label>
+    </ion-item>
+
+    
+    <ion-label>¿Prefieres la consulta de todas las asignaturas del programa o a nivel asignatura?</ion-label>
+    <ion-list>
+      <ion-radio-group value="Asignatura">
+        <ion-item>
+          <ion-label>Programa</ion-label>
+          <ion-radio slot="end" value="programa"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Asignatura</ion-label>
+          <ion-radio slot="end" value="asignatura"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    
+    <ion-label>Programa</ion-label>
+    <ion-searchbar placeholder="Buscar programa..."  animated (ionChange)="buscarPrograma($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select >
+        <ion-select-option>
+          programa.nombre
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-label>Asigantura</ion-label>
+    <ion-searchbar placeholder="Buscar asignatura..."  animated (ionChange)="buscarAsignatura($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select >
+        <ion-select-option>
+          asignatura.nombre
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" (click)="consultar()">Consultar</ion-button>
+  </div>
+
+</ion-content>

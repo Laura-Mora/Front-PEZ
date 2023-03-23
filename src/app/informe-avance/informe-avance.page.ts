@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-form-perso-asign',
-  templateUrl: './form-perso-asign.page.html',
-  styleUrls: ['./form-perso-asign.page.scss'],
+  selector: 'app-informe-avance',
+  templateUrl: './informe-avance.page.html',
+  styleUrls: ['./informe-avance.page.scss'],
 })
-export class FormPersoAsignPage implements OnInit {
+export class InformeAvancePage implements OnInit {
 
   constructor(
     private modalController:ModalController, 
@@ -21,20 +21,5 @@ export class FormPersoAsignPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  buscarTematica(event: any){
-
-  }
-
-  buscarCompetencia(event: any){
-
-  }
-
-  buscarActividades(event: any){
-
-  }
-
-  guardar(){
-
-  }
 
 }

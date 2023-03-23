@@ -16,6 +16,42 @@
       </ion-label>
     </ion-item>
 
+    <ion-item>
+      <ion-label>Tematicas</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar tematica..."  animated (ionChange)="buscarTematica($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select >
+        <ion-select-option>
+          tematica.nombre
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Competencias</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar competencias..."  animated (ionChange)="buscarCompetencia($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select >
+        <ion-select-option>
+          competencia.nombre
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Actividades</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar actividades..."  animated (ionChange)="buscarActividades($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select >
+        <ion-select-option>
+          actividad.nombre
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
     <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
   </div>
 </ion-content>

@@ -35,6 +35,22 @@ const routes: Routes = [
     path: 'form-perso-asign',
     loadChildren: () => import('./form-perso-asign/form-perso-asign.module').then( m => m.FormPersoAsignPageModule)
   },
+  {
+    path: 'informe-avance',
+    loadChildren: () => import('./informe-avance/informe-avance.module').then( m => m.InformeAvancePageModule)
+  },
+  {
+    path: 'home-directores',
+    loadChildren: () => import('./home-directores/home-directores.module').then( m => m.HomeDirectoresPageModule)
+  },
+  {
+    path: 'reporte-asign',
+    loadChildren: () => import('./reporte-asign/reporte-asign.module').then( m => m.ReporteAsignPageModule)
+  },
+  {
+    path: 'parametrizar',
+    loadChildren: () => import('./parametrizar/parametrizar.module').then( m => m.ParametrizarPageModule)
+  },
 ];
 
 @NgModule({
