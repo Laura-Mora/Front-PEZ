@@ -8,6 +8,10 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 })
 export class InformeAvancePage implements OnInit {
 
+  public programas = ["Maestría en ingeniería de sistemas y computación", "Maestría en Analitica para la inteligencia de negocios"]
+  public asignaturas = ["a","b","c"]
+  public programasSuge = ["Maestría en seguridad digital"]
+
   constructor(
     private modalController:ModalController, 
     public toastCtrl: ToastController,

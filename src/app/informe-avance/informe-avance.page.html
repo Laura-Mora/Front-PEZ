@@ -15,6 +15,38 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-list *ngFor="let progra of programas">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{progra}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Has cursado las iaguientes asiganturas para este programa </ion-label>
+        <ion-list>
+          <ion-item *ngFor="let item of asignaturas">
+            <ion-label>
+                {{item}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Programas sugeridos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Con las asignaturas que has cursado y según tu perfil puedes, puedes cursar un
+        multiple programa, con alguno de los siguientes programas de posgrado </ion-label>
+      <ion-list>
+        <ion-item *ngFor="let item of programasSuge">
+          <ion-label>
+              {{item}}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
