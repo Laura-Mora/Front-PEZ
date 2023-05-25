@@ -1,7 +1,6 @@
-export class Contenido {
+export class Tematica {
     id!: number;
     nombre!: string;
     
     constructor(){}
 }
-

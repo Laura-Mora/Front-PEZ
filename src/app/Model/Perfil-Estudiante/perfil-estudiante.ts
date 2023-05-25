@@ -1,10 +1,10 @@
 import { Actividad } from "../Actividad/actividad";
-import { Asignatura } from "../asignatura/asignatura";
+import { Asignatura } from "../Asignatura/asignatura";
 import { Competencia } from "../Competencia/competencia";
 import { ComponenteClase } from "../ComponenteClase/componente-clase";
-import { Contenido } from "../Contenido/contenido";
 import { Horario } from "../Horario/horario";
 import { ModoEnsenianza } from "../Modo-Enseñanza/modo-ensenianza";
+import { Tematica } from "../Tematica/tematica";
 
 export class PerfilEstudiante {
     id!: number;
@@ -14,7 +14,7 @@ export class PerfilEstudiante {
     asignaturasGustadas: Asignatura[] = [];
     asignaturasNoGustadas: Asignatura[] = [];
 
-    tematicasGustan: Contenido[] = [];
+    tematicasGustan: Tematica[] = [];
     actividadesGustan: Actividad[] = [];
     competenciasGustan: Competencia[] = [];
     modoPreferencia: ModoEnsenianza[] = [];

@@ -25,11 +25,20 @@ const routes: Routes = [
   },
   {
     path: 'busqueda-asignaturas',
-    loadChildren: () => import('./busqueda-asignaturas/busqueda-asignaturas.module').then( m => m.BusquedaAsignaturasPageModule)
-  },
-  {
-    path: 'datos-asignatura',
-    loadChildren: () => import('./datos-asignatura/datos-asignatura.module').then( m => m.DatosAsignaturaPageModule)
+    children:[
+      {
+        path:"",
+        loadChildren: () => 
+          import('./busqueda-asignaturas/busqueda-asignaturas.module').then( 
+            m => m.BusquedaAsignaturasPageModule)
+      },
+      {
+        path:":asignaturaID",
+        loadChildren: () => 
+          import('./busqueda-asignaturas/datos-asignatura/datos-asignatura.module').then( 
+            m => m.DatosAsignaturaPageModule)
+      }
+    ]
   },
   {
     path: 'form-perso-asign',

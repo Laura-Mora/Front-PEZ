@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ContenidoService } from './contenido.service';
+import { TematicaService } from './tematica.service';
 
-describe('ContenidoService', () => {
-  let service: ContenidoService;
+describe('TematicaService', () => {
+  let service: TematicaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ContenidoService);
+    service = TestBed.inject(TematicaService);
   });
 
   it('should be created', () => {

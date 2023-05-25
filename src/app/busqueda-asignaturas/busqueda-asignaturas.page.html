@@ -29,22 +29,27 @@
       <ion-card-content *ngIf="collapseCard">
         <ion-item>
           <ion-label>Tematica</ion-label>
-          
+          <ion-select class="custom-options" placeholder="Select One" >
+              <ion-select-option *ngFor="let tematica of tematicas" [value]="">{{tematica.nombre}}</ion-select-option>
+            </ion-select>
         </ion-item>
       </ion-card-content>
     </ion-card>  
 
     <ion-list>
-      <ion-card >
+      <ion-card *ngFor="let asignatura of asignaturas">
         <ion-card-header>
-          <ion-card-title>Nombre</ion-card-title>
+          <ion-card-title>{{asignatura.nombre}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-label>
-            Tematicas
+            Creditos: {{asignatura.creditos}}
+          </ion-label>
+          <ion-label>
+            Complejidad: {{asignatura.complejidad}}
           </ion-label>
         </ion-card-content>
-        <ion-button (click) = "infoAsignatura()">
+        <ion-button (click) = "infoAsignatura()" [routerLink]="['/busqueda-asignaturas',asignatura.id]">
           Ver más
           <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
         </ion-button>
