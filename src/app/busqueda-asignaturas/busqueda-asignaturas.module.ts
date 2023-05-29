@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { BusquedaAsignaturasPageRoutingModule } from './busqueda-asignaturas-routing.module';
 
 import { BusquedaAsignaturasPage } from './busqueda-asignaturas.page';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
+    PipesModule,
     CommonModule,
     FormsModule,
     IonicModule,

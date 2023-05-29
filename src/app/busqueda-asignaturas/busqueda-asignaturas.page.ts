@@ -17,7 +17,6 @@ export class BusquedaAsignaturasPage implements OnInit {
 
   
   textoBuscar='';
-  facultadSelect='';
   tematicaSelect='';
 
   asignaturas: Asignatura[] = [];

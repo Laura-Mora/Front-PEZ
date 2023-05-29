@@ -37,7 +37,7 @@
     </ion-card>  
 
     <ion-list>
-      <ion-card *ngFor="let asignatura of asignaturas">
+      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar">
         <ion-card-header>
           <ion-card-title>{{asignatura.nombre}}</ion-card-title>
         </ion-card-header>
