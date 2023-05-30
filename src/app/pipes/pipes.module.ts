@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { FiltroAsignaturaPipe } from './filtro-asignatura.pipe';
+import { FiltroAsignaturaModalidadPipe } from './filtro-asignatura-modalidad.pipe';
+import { FiltroAsignaturaComplejidadPipe } from './filtro-asignatura-complejidad.pipe';
 
 
 @NgModule({
   declarations: [
-    FiltroAsignaturaPipe
+    FiltroAsignaturaPipe,
+    FiltroAsignaturaModalidadPipe,
+    FiltroAsignaturaComplejidadPipe
   ],
   exports: [
-    FiltroAsignaturaPipe
+    FiltroAsignaturaPipe,
+    FiltroAsignaturaModalidadPipe,
+    FiltroAsignaturaComplejidadPipe
   ]
 })
 export class PipesModule { }

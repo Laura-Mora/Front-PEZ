@@ -33,11 +33,35 @@
               <ion-select-option *ngFor="let tematica of tematicas" [value]="">{{tematica.nombre}}</ion-select-option>
             </ion-select>
         </ion-item>
+        <ion-item>
+          <ion-label>Competencia</ion-label>
+          <ion-select class="custom-options" placeholder="Select One">
+            <ion-select-option *ngFor="let competencia of competencias" [value]="">{{competencia.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Modo Enseñanza</ion-label>
+          <ion-select class="custom-options" placeholder="Select One">
+            <ion-select-option *ngFor="let modo of modosEnse" [value]="">{{modo.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Modalidad</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaModalidad($event)">
+            <ion-select-option *ngFor="let modalidad of modalidades" [value]="modalidad.id">{{modalidad.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Complejidad</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaComplejidad($event)">
+            <ion-select-option *ngFor="let complejidad of complejidades" [value]="">{{complejidad}}</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-card-content>
     </ion-card>  
 
     <ion-list>
-      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar">
+      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar | filtroAsignaturaModalidad: modalidadSelect | filtroAsignaturaComplejidad:complejidadSelect">
         <ion-card-header>
           <ion-card-title>{{asignatura.nombre}}</ion-card-title>
         </ion-card-header>
