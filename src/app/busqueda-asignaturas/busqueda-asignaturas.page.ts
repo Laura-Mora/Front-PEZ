@@ -25,7 +25,9 @@ export class BusquedaAsignaturasPage implements OnInit {
   textoBuscar='';
   tematicaSelect='';
   modalidadSelect=0;
+  modoSelect=0;
   complejidadSelect='';
+  competenciaSelect='';
 
   asignaturas: Asignatura[] = [];
   tematicas: Tematica[] = [];
@@ -68,6 +70,21 @@ export class BusquedaAsignaturasPage implements OnInit {
   buscarAsignaturaComplejidad(event: any){
     const complejidad = event.target.value;
     this.complejidadSelect = complejidad;
+  }
+
+  buscarAsiganturaTematica(event: any){
+    const tema = event.target.value;
+    this.tematicaSelect = tema;
+  }
+
+  buscarAsiganturaCompetencia(event: any){
+    const compe = event.target.value;
+    this.competenciaSelect = compe;
+  }
+
+  buscarAsignaturaModo(event: any){
+    const modoE = event.target.value;
+    this.modoSelect = modoE;
   }
 
   findAsignatura(){
@@ -118,6 +135,15 @@ export class BusquedaAsignaturasPage implements OnInit {
       },
       error => console.error(error)
     )
+  }
+
+  borrarFiltros(){
+    this.textoBuscar='';
+    this.tematicaSelect='';
+    this.modalidadSelect=0;
+    this.modoSelect=0;
+    this.complejidadSelect='';
+    this.competenciaSelect='';
   }
 
   infoAsignatura(){

@@ -29,20 +29,20 @@
       <ion-card-content *ngIf="collapseCard">
         <ion-item>
           <ion-label>Tematica</ion-label>
-          <ion-select class="custom-options" placeholder="Select One" >
-              <ion-select-option *ngFor="let tematica of tematicas" [value]="">{{tematica.nombre}}</ion-select-option>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsiganturaTematica($event)">
+              <ion-select-option *ngFor="let tematica of tematicas" [value]="tematica.nombre">{{tematica.nombre}}</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Competencia</ion-label>
-          <ion-select class="custom-options" placeholder="Select One">
-            <ion-select-option *ngFor="let competencia of competencias" [value]="">{{competencia.nombre}}</ion-select-option>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsiganturaCompetencia($event)">
+            <ion-select-option *ngFor="let competencia of competencias" [value]="competencia.nombre">{{competencia.nombre}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Modo Enseñanza</ion-label>
-          <ion-select class="custom-options" placeholder="Select One">
-            <ion-select-option *ngFor="let modo of modosEnse" [value]="">{{modo.nombre}}</ion-select-option>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaModo($event)">
+            <ion-select-option *ngFor="let modo of modosEnse" [value]="modo.id">{{modo.nombre}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
@@ -57,11 +57,15 @@
             <ion-select-option *ngFor="let complejidad of complejidades" [value]="">{{complejidad}}</ion-select-option>
           </ion-select>
         </ion-item>
+        <ion-button (click) = "borrarFiltros()">
+          Borrar filtros
+          <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-button>
       </ion-card-content>
     </ion-card>  
 
     <ion-list>
-      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar | filtroAsignaturaModalidad: modalidadSelect | filtroAsignaturaComplejidad:complejidadSelect">
+      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar | filtroAsignaturaTematicaTexto: textoBuscar | filtroAsignaturaCompetenciaTexto: textoBuscar | filtroAsignaturaModalidad: modalidadSelect | filtroAsignaturaComplejidad:complejidadSelect | filtroAsignaturaTematicaSelect:tematicaSelect | filtroAsignaturaCompetenciaSelect:competenciaSelect | filtroAsignaturaModo:modoSelect">
         <ion-card-header>
           <ion-card-title>{{asignatura.nombre}}</ion-card-title>
         </ion-card-header>

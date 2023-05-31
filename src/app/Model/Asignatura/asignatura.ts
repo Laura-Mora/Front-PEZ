@@ -12,7 +12,7 @@ export class Asignatura {
     creditos!: number;
     complejidad!: string;
     poblacionObjetivo!: string;
-    tematica: Tematica[] = [];
+    tematicas: Tematica[] = [];
     actividades: Actividad[] = [];
     competencias: Competencia[] = [];
     modoEnsenianza!: ModoEnsenianza;

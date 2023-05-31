@@ -12,7 +12,7 @@ export class FiltroAsignaturaModalidadPipe implements PipeTransform {
       return asignaturas;
     }
     return asignaturas.filter(asignatura => {
-      return asignatura.modalidad?.id === idModalidad;
+      return asignatura.modalidad.id === idModalidad;
     });
   }
 

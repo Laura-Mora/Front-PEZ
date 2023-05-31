@@ -31,7 +31,7 @@ export class DatosAsignaturaPage implements OnInit {
         this.findAsignatura(+asignaturaID);
       } 
     });
-    
+    console.log(this.asignaturaSelect)
   }
 
   guardarOpinion(){
