@@ -10,6 +10,8 @@ export class PerfilEstudiante {
     id!: number;
     idEstudiante!: number;
     javeriano!:boolean;
+    profesion!:string;
+    areaDesempenio!: string;
     asignaturasCursadas: Asignatura[] = [];
     asignaturasGustadas: Asignatura[] = [];
     asignaturasNoGustadas: Asignatura[] = [];

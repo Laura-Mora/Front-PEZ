@@ -26,6 +26,16 @@ export class LoginPage implements OnInit {
     //console.log("Click");
    //this.router.navigate(["registro"]);
   }
+  async alertaElementoNoSeleccionado(elemento: any, mensaje: any) {
+    const alert = await this.alertController.create({
+      cssClass: "custom-class-alert",
+      header: "Error",
+      subHeader: elemento,
+      message: mensaje,
+      buttons: ["OK"],
+    });
+    await alert.present();
+  }
 
   async onLogin() {
   /*  if (this.email.length === 0) { // TODO: hacer validacion del correo

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AlertController, NavController } from "@ionic/angular";
+import { Usuario } from '../Model/Usuario/usuario';
+import { LoginService } from '../servicios/login.service';
+import { Programa } from '../Model/Programa/programa';
+import { ProgramaService } from '../Model/Programa/programa.service';
+
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -8,38 +14,64 @@ import { AlertController, NavController } from "@ionic/angular";
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  /*mensajeError: string;
-  error_visibility: boolean;*/
+  mensajeError: string | undefined;
+  error_visibility: boolean | undefined;
 
-  public programas = ["Maestría en ingeniería de sistemas y computación", "Maestría en Analitica para la inteligencia de negocios", "Maestría en Inteligencia Artificila", "Maestría en Seguridad informática"]
+  //public programas = ["Maestría en ingeniería de sistemas y computación", "Maestría en Analitica para la inteligencia de negocios", "Maestría en Seguridad informática"]
+
+  public tipos =["Director","Estudiante"];
 
   nombre: string = "";
-  apellido: string = "";
   email: string = "";
   password: string = "";
-  programa: string = "";
+  programasSeleccionados: number[] = [];
+  tipo:string="";
+  isToastOpen = false;
+
+  programas: Programa[]=[];
 
   constructor(
     public alertController: AlertController,
     public nav: NavController,
-    //private loginService: LoginService,
-    private router: Router
+    private loginService: LoginService,
+    private router: Router,
+    private programaService: ProgramaService,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
+    this.error_visibility = false;
+    this.mensajeError = "";
+    this.findProgramas();
+  }
+
+  findProgramas(){
+    this.programaService.getProgramas().subscribe(
+      results => {
+        console.log(results);
+        this.programas = results;
+      },
+      error => console.error(error)
+    )
+  }
+
+  async alertaElementoNoSeleccionado(elemento: any, mensaje: any) {
+    const alert = await this.alertController.create({
+      cssClass: "custom-class-alert",
+      header: "Error",
+      subHeader: elemento,
+      message: mensaje,
+      buttons: ["OK"],
+    });
+    await alert.present();
   }
 
   async onRegister() {
 
-   /* if (this.nombre.length === 0) {
+   if (this.nombre.length === 0) {
       await this.alertaElementoNoSeleccionado(
         "Nombre de usuario vacío",
         "Para continuar con el registro se debe ingresar un nombre."
-      );
-    } else if (this.apellido.length === 0) {
-      await this.alertaElementoNoSeleccionado(
-        "Apellido vacío",
-        "Para continuar con el registro se debe ingresar un apellido."
       );
     } else if (this.email.length === 0) { // TODO: hacer validacion del correo
       await this.alertaElementoNoSeleccionado(
@@ -51,25 +83,32 @@ export class RegistroPage implements OnInit {
         "Contraseña vacía",
         "Para continuar con el registro se debe ingresar una contraseña."
       );
-    } else if (Number.isNaN(this.semestre)) {
+    } else if (this.programasSeleccionados.length === 0 ) {
       await this.alertaElementoNoSeleccionado(
-        "Semestre no seleccionado",
-        "Para continuar con el registro debes seleccionar el semestre en el cual te encuentras."
+        "Programa no seleccionado",
+        "Para continuar con el registro debes seleccionar el programa en el cual te encuentras."
       );
     } else {
+      
       this.loginService.register(
         this.nombre,
-        this.apellido,
         this.email,
         this.password,
-        this.semestre
+        this.programasSeleccionados,
+        this.tipo
       ).subscribe(
         results => {
           // console.log("ingreso exitoso: ", results);
 
-          const usuario: UsuarioGeneral = results.body;
-          this.loginService.storeUser(usuario, results.headers.get('authorization'));
-          this.router.navigate(["formulario_registro"]);
+          const usuario: Usuario | null = results.body;
+          if (usuario !== null) {
+            const authorizationHeader: string | null = results.headers.get('authorization');
+            if (authorizationHeader !== null) {
+              this.loginService.storeUser(usuario, authorizationHeader);
+              //this.router.navigate(["formulario_registro"]);
+            }
+            this.presentToast('top' );
+          }
         },
         error => {
           this.error_visibility = true;
@@ -77,11 +116,22 @@ export class RegistroPage implements OnInit {
           console.error(error);
         }
       );
-    }*/
+    }
   }
 
   // go to login page
   login() {
     this.router.navigate(["login"]);
   }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'El usuario ha sido creado',
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+  
 }

@@ -30,16 +30,6 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon name="person"></ion-icon>
-        <ion-input
-          name="apellido"
-          type="text"
-          [(ngModel)]="apellido"
-          required placeholder="Ingresa tu apellido">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
         <ion-icon name="mail"></ion-icon>
         <ion-input
           name="email"
@@ -59,22 +49,32 @@
       </ion-item>
     </form>
 
-
     <ion-item>
       <ion-label>Programa</ion-label>
       <ion-select
-        [(ngModel)]="programa">
-        <ion-select-option *ngFor="let item of programas" >
-          {{item}}
+        multiple
+        [(ngModel)]="programasSeleccionados">
+        <ion-select-option *ngFor="let item of programas" [value]="item.id">
+          {{ item.nombre }}
         </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-select
+      [(ngModel)]="tipo">
+      <ion-select-option *ngFor="let item of tipos">
+        {{item}}
+      </ion-select-option>
       </ion-select>
     </ion-item>
 
 
     <div class="enter_btn">
-      <button class="myButton" (click)="onRegister()">
+      <ion-button class="myButton" (click)="onRegister()">
         Registrarse
-      </button>
+      </ion-button>
     </div>
 
     <!-- Other links -->

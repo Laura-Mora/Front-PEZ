@@ -1,4 +1,4 @@
-import { Asignatura } from "../asignatura/asignatura";
+import { Asignatura } from "../Asignatura/asignatura";
 
 export class Componente {
     id!: number;

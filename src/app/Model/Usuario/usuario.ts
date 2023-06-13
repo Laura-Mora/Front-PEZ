@@ -1,4 +1,6 @@
 import { Asignatura } from "../Asignatura/asignatura";
+import { PerfilEstudiante } from "../Perfil-Estudiante/perfil-estudiante";
+import { Programa } from "../Programa/programa";
 
 export class Usuario {
     id!: number;
@@ -6,10 +8,12 @@ export class Usuario {
     correo!: string;
     contrasenia!: string;
     semestre!: number;
-    profesion!:string;
-    areaDesempenio!: string;
+    programa!: Programa[];
 
-    asignaturasSugeridas: Asignatura[] =[];
+    perfilEstudiante_id!: number;
+    perfilEstudiante!: PerfilEstudiante;
+
+    //asignaturasSugeridas: Asignatura[] =[];
     
     constructor(){}
 }
