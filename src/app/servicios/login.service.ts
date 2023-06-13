@@ -20,22 +20,31 @@ export class LoginService {
     private http: HttpClient
   ) { }
 
-  loginPost(url: string, msg: unknown): Observable<HttpResponse<Usuario>> {
-    const respuesta = this.http
-      .post(
-        url,
-        msg,
-        {
-          withCredentials: true,
-          observe: 'response'
-        }
-      );
-
-    return respuesta as Observable<HttpResponse<Usuario>> ;
+  loginPost(url: string, msg: { username: string, password: string }): Observable<HttpResponse<Usuario>> {
+    const formData = new FormData();
+    formData.append('username', msg.username);
+    formData.append('password', msg.password);
+  
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+  
+    const respuesta = this.http.post(
+      url,
+      formData,
+      {
+        withCredentials: true,
+        observe: 'response',
+        headers: headers
+      }
+    );
+  
+    return respuesta as Observable<HttpResponse<Usuario>>;
   }
 
   login(username: string, password: string): Observable<HttpResponse<Usuario>> {
     const url = `${environment.baseUrl}/usuario/login`;
+    console.log(username);
+    console.log(password);
     return this.loginPost(url,
       {
         "username": username,
@@ -114,7 +123,7 @@ export class LoginService {
     }
     sessionStorage.removeItem(this.USER);
     sessionStorage.removeItem(this.TOKEN);
-    return this.http.post(`${environment.baseUrl}/logout`, '', {
+    return this.http.post(`${environment.baseUrl}/usuario/logout`, '', {
       withCredentials: true
     });
   }

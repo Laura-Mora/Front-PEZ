@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AlertController, NavController } from "@ionic/angular";
+import { LoginService } from '../servicios/login.service';
+import { Usuario } from '../Model/Usuario/usuario';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginPage implements OnInit {
   constructor(
     public nav: NavController,
     public alertController: AlertController,
-    //private login: LoginService,
+    private login: LoginService,
     private router: Router
   ) { }
 
@@ -38,7 +40,7 @@ export class LoginPage implements OnInit {
   }
 
   async onLogin() {
-  /*  if (this.email.length === 0) { // TODO: hacer validacion del correo
+    if (this.email.length === 0) { // TODO: hacer validacion del correo
       await this.alertaElementoNoSeleccionado(
         "Correo vacío",
         "Para continuar con el registro se debe ingresar un correo valido."
@@ -52,18 +54,27 @@ export class LoginPage implements OnInit {
       this.login.login(this.email, this.password)
         .subscribe(
           results => {
-            // console.log("ingreso exitoso: ", results)
-            // console.log(results.headers)
-            const usuario: UsuarioGeneral = results.body;
-
-            this.login.storeUser(usuario, results.headers.get('authorization'));
-            this.router.navigate(["auth-home"]);
+            const usuario: Usuario | null = results.body;
+            if (usuario !== null) {
+              const authorizationHeader = results.headers.get('authorization') ?? '';
+              this.login.storeUser(usuario, authorizationHeader);
+              console.log(usuario);
+              this.router.navigate(["home"]);
+              /*if (usuario.tipo == "Estudiante"){
+                this.router.navigate(["home"]);
+              }else{
+                this.router.navigate(["home-directores"]);
+              }*/
+            } else {
+              // El valor es nulo, puedes manejar este caso según sea necesario
+              console.error("La respuesta no contiene un objeto de usuario válido.");
+            }
           },
           error => {
             console.error(error);
             this.password = "";
           }
         );
-    }*/
+    }
   }
 }

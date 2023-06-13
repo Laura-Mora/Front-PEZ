@@ -9,6 +9,7 @@ export class Usuario {
     contrasenia!: string;
     semestre!: number;
     programa!: Programa[];
+    tipo!: string;
 
     perfilEstudiante_id!: number;
     perfilEstudiante!: PerfilEstudiante;
