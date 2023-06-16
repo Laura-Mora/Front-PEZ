@@ -7,6 +7,9 @@ import { FiltroAsignaturaCompetenciaSelectPipe } from './filtro-asignatura-compe
 import { FiltroAsignaturaModoPipe } from './filtro-asignatura-modo.pipe';
 import { FiltroAsignaturaTematicaTextoPipe } from './filtro-asignatura-tematica-texto.pipe';
 import { FiltroAsignaturaCompetenciaTextoPipe } from './filtro-asignatura-competencia-texto.pipe';
+import { FiltroTematicaPipe } from './filtro-tematica.pipe';
+import { FiltroCompetenciasPipe } from './filtro-competencias.pipe';
+import { FiltroActividadesPipe } from './filtro-actividades.pipe';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { FiltroAsignaturaCompetenciaTextoPipe } from './filtro-asignatura-compet
     FiltroAsignaturaCompetenciaSelectPipe,
     FiltroAsignaturaModoPipe,
     FiltroAsignaturaTematicaTextoPipe,
-    FiltroAsignaturaCompetenciaTextoPipe
+    FiltroAsignaturaCompetenciaTextoPipe,
+    FiltroTematicaPipe,
+    FiltroCompetenciasPipe,
+    FiltroActividadesPipe
   ],
   exports: [
     FiltroAsignaturaPipe,
@@ -28,7 +34,10 @@ import { FiltroAsignaturaCompetenciaTextoPipe } from './filtro-asignatura-compet
     FiltroAsignaturaCompetenciaSelectPipe,
     FiltroAsignaturaModoPipe,
     FiltroAsignaturaTematicaTextoPipe,
-    FiltroAsignaturaCompetenciaTextoPipe
+    FiltroAsignaturaCompetenciaTextoPipe,
+    FiltroTematicaPipe,
+    FiltroCompetenciasPipe,
+    FiltroActividadesPipe
   ]
 })
 export class PipesModule { }

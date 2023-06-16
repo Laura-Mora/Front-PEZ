@@ -1,4 +1,5 @@
 export class Horario {
     id!:number;
-    fecha!:Date;
+    hora!:Date;
+    dia!: string;
 }
