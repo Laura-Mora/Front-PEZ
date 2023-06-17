@@ -17,6 +17,20 @@ export class DatosAsignaturaPage implements OnInit {
   asignaturaSelect : Asignatura =  new Asignatura();
   tematicas: Tematica[] = [];
 
+  aprendizaje: boolean = true;
+  tematicasAbordadas: boolean = true;
+  estrategiasPedago: boolean = true;
+  actividadesAsig: boolean = true;
+  complejidad: string = "";
+  agradoProfe: boolean = true;
+  asignaturaVidaTrab: string = "";
+  cargaTrabajo: boolean = true;
+  exigenciaAsig: string = "";
+  notasTiempo: boolean = true;
+  retroalimentacion: boolean = true;
+  incidenciaProfe: boolean = true;
+  comentarios: string = "";
+
   constructor(
     private activatedRoute :ActivatedRoute, 
     private asignaturaService : AsignaturaService, 

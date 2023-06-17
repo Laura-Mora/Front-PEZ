@@ -34,59 +34,59 @@
       <ion-card-content *ngIf="collapseCard">
           <ion-label>¿Considera que aprendió en la asignatura? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="aprendizaje">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Las temáticas abordadas cumplieron con lo que requería? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="tematicasAbordadas">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Las estrategias pedagógicas llevadas por el profesor fueron de su agrado? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="estrategiasPedago">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Las actividades propias de la asignatura realizadas fueron de su agrado? (Ejm: Talleres, proyectos, parciales...) </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="actividadesAsig">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Que nivel de complejidad le asignaría la asignatura? </ion-label>
           <ion-list>
-            <ion-radio-group value="Medio">
+            <ion-radio-group value="medio" [(ngModel)]="complejidad">
               <ion-item>
                 <ion-label>Alto</ion-label>
                 <ion-radio slot="end" value="alto"></ion-radio>
@@ -103,20 +103,20 @@
           </ion-list>
           <ion-label>¿Fue de su agrado el profesor? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="agradoProfe">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿La asignatura le sirvió para la vida o para el trabajo? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="vida" [(ngModel)]="asignaturaVidaTrab">
               <ion-item>
                 <ion-label>Vida</ion-label>
                 <ion-radio slot="end" value="vida"></ion-radio>
@@ -129,20 +129,20 @@
           </ion-list>
           <ion-label>¿Considera que la carga de trabajo para la asignatura es adecuada? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="cargaTrabajo">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Que nivel de exigencia le asignaría la asignatura? </ion-label>
           <ion-list>
-            <ion-radio-group value="Medio">
+            <ion-radio-group value="medio" [(ngModel)]="exigenciaAsig">
               <ion-item>
                 <ion-label>Alto</ion-label>
                 <ion-radio slot="end" value="alto"></ion-radio>
@@ -159,33 +159,33 @@
           </ion-list>
           <ion-label>¿Considera que las calificaciones fueron entregadas a tiempo? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="notasTiempo">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Considera oportuna la retroalimentación dada a las diferentes calificaciones obtenidas? </ion-label>
           <ion-list>
-            <ion-radio-group value="si">
+            <ion-radio-group value="true" [(ngModel)]="retroalimentacion">
               <ion-item>
                 <ion-label>Si</ion-label>
-                <ion-radio slot="end" value="si"></ion-radio>
+                <ion-radio slot="end" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio slot="end" value="no"></ion-radio>
+                <ion-radio slot="end" value="false"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>¿Qué tanto incidió el profesor en la elección de esta asignatura? </ion-label>
           <ion-list>
-            <ion-radio-group value="Mucho">
+            <ion-radio-group value="Mucho" [(ngModel)]="incidenciaProfe">
               <ion-item>
                 <ion-label>Mucho</ion-label>
                 <ion-radio slot="end" value="alto"></ion-radio>
@@ -196,13 +196,13 @@
               </ion-item>
               <ion-item>
                 <ion-label>Nada</ion-label>
-                <ion-radio slot="end" value="bajo"></ion-radio>
+                <ion-radio slot="end" value="nada"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           <ion-label>Por favor deje un comentario sobre la asignatura para que los demás estudiantes se puedan dar una guía de esta. </ion-label>
           <ion-item>
-            <ion-input placeholder="Comentario"></ion-input>
+            <ion-input placeholder="Comentario" [(ngModel)]="comentarios"></ion-input>
           </ion-item>
           <ion-button (click) = "guardarOpinion()">
             Guardar Opinion
