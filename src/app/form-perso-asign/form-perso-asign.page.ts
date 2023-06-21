@@ -38,6 +38,8 @@ export class FormPersoAsignPage implements OnInit {
   profesion: string = "";
   areaDesempenio: string = "";
   motivo: string = "";
+  javeriano: boolean = true;
+  semestre: number = 0;
   asignaturasCursadas: number[] = [];
   tematicasUsuario: number[] = [];
   competenciasUsuario: number[] = [];

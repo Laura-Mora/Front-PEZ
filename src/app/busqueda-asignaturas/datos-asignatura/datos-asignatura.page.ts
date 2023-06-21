@@ -4,7 +4,9 @@ import { Asignatura } from '../../Model/Asignatura/asignatura';
 import { AsignaturaService } from '../../Model/Asignatura/asignatura.service';
 import { Tematica } from '../../Model/Tematica/tematica';
 import { TematicaService } from '../../Model/Tematica/tematica.service';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+import { ReseniaServiceService } from 'src/app/Model/Resenia/resenia-service.service';
+import { Resenia } from 'src/app/Model/Resenia/resenia';
 
 @Component({
   selector: 'app-datos-asignatura',
@@ -12,6 +14,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./datos-asignatura.page.scss'],
 })
 export class DatosAsignaturaPage implements OnInit {
+
+  mensajeError: string | undefined;
+  error_visibility: boolean | undefined;
 
   collapseCard = true;
   asignaturaSelect : Asignatura =  new Asignatura();
@@ -32,10 +37,13 @@ export class DatosAsignaturaPage implements OnInit {
   comentarios: string = "";
 
   constructor(
+    public alertController: AlertController,
     private activatedRoute :ActivatedRoute, 
     private asignaturaService : AsignaturaService, 
     private tematicasService : TematicaService,
-    public toastCtrl: ToastController 
+    public toastCtrl: ToastController,
+    private reseniaService: ReseniaServiceService,
+    private toastController: ToastController 
     ) { }
 
   ngOnInit() {
@@ -45,11 +53,58 @@ export class DatosAsignaturaPage implements OnInit {
         this.findAsignatura(+asignaturaID);
       } 
     });
-    console.log(this.asignaturaSelect)
+    console.log(this.asignaturaSelect);
+    this.error_visibility = false;
+    this.mensajeError = "";
   }
 
-  guardarOpinion(){
-    
+  async alertaElementoNoSeleccionado(elemento: any, mensaje: any) {
+    const alert = await this.alertController.create({
+      cssClass: "custom-class-alert",
+      header: "Error",
+      subHeader: elemento,
+      message: mensaje,
+      buttons: ["OK"],
+    });
+    await alert.present();
+  }
+
+  async guardarOpinion(){
+    if (this.comentarios.length === 0) {
+      await this.alertaElementoNoSeleccionado(
+        "Sin comentarios",
+        "Para continuar con la reseña se debe ingresar un comentario."
+      );
+    }else{
+      this.reseniaService.resenia(
+        this.aprendizaje,
+        this.tematicasAbordadas,
+        this.estrategiasPedago,
+        this.actividadesAsig,
+        this.complejidad,
+        this.agradoProfe,
+        this.asignaturaVidaTrab,
+        this.cargaTrabajo,
+        this.exigenciaAsig,
+        this.notasTiempo,
+        this.retroalimentacion,
+        this.incidenciaProfe,
+        this.comentarios,
+        this.asignaturaSelect.id
+      ).subscribe(
+        results => {
+          const resenia: Resenia | null = results.body;
+          if (resenia !== null) {
+            this.presentToast('top' );
+          }
+        },
+        error => {
+          this.error_visibility = true;
+          this.mensajeError = error;
+          console.error(error);
+        }
+      );
+    }
   }
 
   findAsignatura(asignaturaID:number){
@@ -62,5 +117,16 @@ export class DatosAsignaturaPage implements OnInit {
     )
 
   }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'La reseña ha sidocreada',
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+  
 
 }
