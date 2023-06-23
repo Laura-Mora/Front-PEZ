@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Programa } from '../Model/Programa/programa';
 import { HttpHeaders } from '@angular/common/http';
+import axios from 'axios';
+
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +43,7 @@ export class LoginService {
     return respuesta as Observable<HttpResponse<Usuario>>;
   }
 
-  login(username: string, password: string): Observable<HttpResponse<Usuario>> {
+  login(username: string, password: string) {
     const url = `${environment.baseUrl}/usuario/login`;
     console.log(username);
     console.log(password);
@@ -104,6 +106,26 @@ export class LoginService {
   
   getToken(): string | null {
     return sessionStorage.getItem(this.TOKEN);
+  }
+
+  updateUserSession(){
+    
+    const userString: string | null = sessionStorage.getItem('user');
+    if (userString !== null) {
+      const usuario = JSON.parse(userString) as Usuario;
+      const id = usuario.id; 
+      const url = `${environment.baseUrl}/usuario/${id}`;
+
+      axios.get(url).then(response => {
+      const usuario = response.data; // Aquí tienes el objeto de usuario retornado por el backend
+      console.log(usuario);
+      this.storeUser(usuario,this.TOKEN);
+      // Aquí puedes realizar las operaciones necesarias con el usuario
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
   }
   
 

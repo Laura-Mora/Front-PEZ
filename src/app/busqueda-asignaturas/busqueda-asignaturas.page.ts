@@ -13,6 +13,8 @@ import { ModoEnsenianza } from '../Model/Modo-Enseñanza/modo-ensenianza';
 import { ModoEnsenianzaService } from '../Model/Modo-Enseñanza/modo-ensenianza.service';
 import { Tematica } from '../Model/Tematica/tematica';
 import { TematicaService } from '../Model/Tematica/tematica.service';
+import { LoginService } from '../servicios/login.service';
+import { Usuario } from '../Model/Usuario/usuario';
 
 @Component({
   selector: 'app-busqueda-asignaturas',
@@ -36,9 +38,12 @@ export class BusquedaAsignaturasPage implements OnInit {
   modalidades: ComponenteClase[]=[]
   complejidades: String[] = ["Alta","Media","Baja"];
 
+  usuario:Usuario | null;
+  
   collapseCard = true;
 
   constructor(
+    private loginService: LoginService,
     public router: Router,
     public navCtrl : NavController,
     private aservice : AsignaturaService,
@@ -46,7 +51,9 @@ export class BusquedaAsignaturasPage implements OnInit {
     private cservice: CompetenciaService,
     private modservice: ModoEnsenianzaService,
     private modalidadesservice: ComponenteClaseService
-  ) { }
+  ) { 
+    this.usuario = this.loginService.getUser();
+  }
 
   ngOnInit() {
     this.findAsignatura();
@@ -54,6 +61,7 @@ export class BusquedaAsignaturasPage implements OnInit {
     this.findCompetencia();
     this.findModoEnsenianza();
     this.findModalidad();
+    console.log(this.usuario);
   }
 
   buscarAsignatura (event: any){

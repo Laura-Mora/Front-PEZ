@@ -50,6 +50,24 @@ export class NetService {
       );
   }
 
+  public put<T>(url: string, data: T): Observable<T> {
+    console.log('put:', url);
+    console.log(data);
+    return this.http.put<T>(
+      url,
+      data,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        withCredentials: true
+      }
+    ).pipe(
+      // retry(5),
+      catchError(this.handleError)
+    );
+  }
+
   public handleError(error: HttpErrorResponse): Observable<any> {
     console.log(error);
     return throwError('An error has occurred');

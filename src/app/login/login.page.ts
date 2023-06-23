@@ -54,17 +54,19 @@ export class LoginPage implements OnInit {
       this.login.login(this.email, this.password)
         .subscribe(
           results => {
-            const usuario: Usuario | null = results.body;
+            const data: any = results.body; // Asignar la respuesta completa a una variable
+            const usuario: Usuario = data.usuario;
             if (usuario !== null) {
               const authorizationHeader = results.headers.get('authorization') ?? '';
               this.login.storeUser(usuario, authorizationHeader);
-              console.log(usuario);
-              this.router.navigate(["home"]);
-              /*if (usuario.tipo == "Estudiante"){
+              console.log(usuario.tipo);
+              
+              if (usuario.tipo.trim() === "Estudiante") {
                 this.router.navigate(["home"]);
-              }else{
+              } else {
                 this.router.navigate(["home-directores"]);
-              }*/
+              }              
+          
             } else {
               // El valor es nulo, puedes manejar este caso según sea necesario
               console.error("La respuesta no contiene un objeto de usuario válido.");

@@ -14,6 +14,9 @@ import { ComponenteClaseService } from '../Model/ComponenteClase/componente-clas
 import { ComponenteClase } from '../Model/ComponenteClase/componente-clase';
 import { ModoEnsenianzaService } from '../Model/Modo-Enseñanza/modo-ensenianza.service';
 import { ModoEnsenianza } from '../Model/Modo-Enseñanza/modo-ensenianza';
+import { LoginService } from '../servicios/login.service';
+import { Usuario } from '../Model/Usuario/usuario';
+import { UsuarioService } from '../Model/Usuario/usuario.service';
 
 @Component({
   selector: 'app-form-perso-asign',
@@ -29,6 +32,8 @@ export class FormPersoAsignPage implements OnInit {
   horarios: Horario[] =[];
   componentesClase: ComponenteClase[] =[];
   modos: ModoEnsenianza[] = [];
+
+  usuario: Usuario | null;
 
   textoBuscar='';
   tematicaBuscar='';
@@ -49,6 +54,7 @@ export class FormPersoAsignPage implements OnInit {
   modosUsuario: number[] = [];
 
   constructor(
+    private loginService: LoginService,
     private modalController:ModalController, 
     public toastCtrl: ToastController,
     public alertController: AlertController,
@@ -58,8 +64,11 @@ export class FormPersoAsignPage implements OnInit {
     private acservice: ActividadService,
     private hservice: HorarioService,
     private ccservice: ComponenteClaseService,
-    private modoservice: ModoEnsenianzaService
-  ) { }
+    private modoservice: ModoEnsenianzaService,
+    private userservice: UsuarioService
+  ) { 
+    this.usuario = this.loginService.getUser();
+  }
 
   ngOnInit() {
     this.findAsignatura();
@@ -166,9 +175,110 @@ export class FormPersoAsignPage implements OnInit {
     this.actividadBuscar = texto;
   }
 
+  async alertaElementoNoSeleccionado(elemento: any, mensaje: any) {
+    const alert = await this.alertController.create({
+      cssClass: "custom-class-alert",
+      header: "Error",
+      subHeader: elemento,
+      message: mensaje,
+      buttons: ["OK"],
+    });
+    await alert.present();
+  }
 
-  guardar(){
+  async guardar(){
+    if(this.profesion.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Profesión del usuario vacío",
+        "Para continuar con el registro de su perfil se debe ingresar una profesión."
+      );
+    }else if(this.areaDesempenio.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Área de desempeño del usuario vacío",
+        "Para continuar con el registro de su perfil se debe ingresar un área."
+      );
+    }else if(this.motivo.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Motivo del usuario vacío",
+        "Para continuar con el registro de su perfil se debe ingresar un motivo."
+      );
+    }else if(this.semestre === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Semestre del usuario vacío",
+        "Para continuar con el registro de su perfil se debe ingresar un semestre."
+      );
+    }else if(this.tematicasUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Tematicas del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos una temática."
+      );
+    }else if(this.competenciasUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Competencias del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos una competencia."
+      );
+    }else if(this.actividadesUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Actividades del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos una actividad."
+      );
+    }else if(this.horariosUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Horarios del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos un horario."
+      );
+    }else if(this.modalidadUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Modalidad del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos una modalidad."
+      );
+    }else if(this.modosUsuario.length === 0){
+      await this.alertaElementoNoSeleccionado(
+        "Modo del usuario no seleccionadas",
+        "Para continuar con el registro de su perfil se debe seleccionar al menos un modo."
+      );
+    } else{
+      let id: number = 0;
+      if (this.usuario !== null){
+        id = this.usuario.id;
+      }
 
+      const semestreNum = Number(this.semestre);
+
+      this.userservice.perso(
+        id,
+        this.profesion,
+        this.areaDesempenio,
+        this.motivo,
+        this.javeriano,
+        semestreNum,
+        this.asignaturasCursadas,
+        this.tematicasUsuario,
+        this.competenciasUsuario,
+        this.actividadesUsuario,
+        this.horariosUsuario,
+        this.modalidadUsuario,
+        this.modosUsuario
+      ).subscribe(
+        results =>{
+          console.log(results);
+          this.closeModal();
+          this.loginService.updateUserSession();
+        },
+        error => console.error(error)
+      );
+      this.presentToast("Tus datos han sido actualizados");
+    }
+  }
+
+  async presentToast(mensaje: any){
+    const toast = await this.toastCtrl.create(
+      {
+        message: mensaje,
+        duration: 4000
+      }
+    );
+    toast.present();
   }
 
 }
