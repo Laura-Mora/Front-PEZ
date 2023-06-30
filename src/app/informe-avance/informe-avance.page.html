@@ -15,23 +15,53 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let progra of programas">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{progra.nombre}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Has cursado las siguientes asiganturas para este programa </ion-label>
-        <ion-list>
-          <ion-item *ngFor="let asigantura of asignaturas">
-            <ion-label>
-                {{asigantura.nombre}}
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
+  <ion-list>
+    <ion-item-group *ngFor="let programa of programas">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ programa.programa }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item-divider color="secondary">
+              Componentes
+            </ion-item-divider>
+            <ion-item-group *ngFor="let componente of programa.componentes">
+              <ion-item>
+                <ion-label>{{ componente.nombre }}</ion-label>
+              </ion-item>
+              <ion-item-divider color="light">
+                Asignaturas
+              </ion-item-divider>
+              <ion-item-group *ngFor="let asignatura of componente.asignaturas">
+                <ion-item>
+                  <ion-label>{{ asignatura }}</ion-label>
+                </ion-item>
+              </ion-item-group>
+              <ion-item-divider color="light">
+                Subcomponentes
+              </ion-item-divider>
+              <ion-item-group *ngFor="let subcomponente of componente.subcomponentes">
+                <ion-item>
+                  <ion-label >{{ subcomponente.nombre }}</ion-label>
+                </ion-item>
+                <ion-item-divider color="light">
+                  Asignaturas
+                </ion-item-divider>
+                <ion-item-group *ngFor="let asignatura of subcomponente.asignaturas">
+                  <ion-item>
+                    <ion-label>{{ asignatura }}</ion-label>
+                  </ion-item>
+                </ion-item-group>
+              </ion-item-group>
+            </ion-item-group>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-item-group>
   </ion-list>
+  
+  
 
   <ion-card>
     <ion-card-header>

@@ -5,6 +5,7 @@ export class Componente {
     id!: number;
     nombre!: string;
     cantCreditos!: number;
+    asignaturas: Asignatura[] = []; //Asignaturas para el avance del programa
     asignaturasElectivas: Asignatura[] = [];
     asignaturasObligatorias: Asignatura[] = [];
     subcomponentes: SubComponente[] = [];

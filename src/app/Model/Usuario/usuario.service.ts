@@ -52,4 +52,11 @@ export class UsuarioService {
     return this.net.post<any>(url, data);
     
   }
+
+  avance(id:Number){
+    const url = `${environment.baseUrl}/usuario/avance/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.net.get<any>(url);
+  }
 }
