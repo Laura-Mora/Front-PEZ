@@ -59,4 +59,18 @@ export class UsuarioService {
 
     return this.net.get<any>(url);
   }
+
+  recomendar_asignaturas(id:Number){
+    const url = `${environment.baseUrl}/perfilEstudiante/sugerenciaAsignatura/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.net.get<any>(url);
+  }
+
+  sugerir_asignaturas_por_preferencias(id: Number){
+    const url = `${environment.baseUrl}/perfilEstudiante/sugerenciaAsignaturaPreferencias/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.net.get<any>(url);
+  }
 }

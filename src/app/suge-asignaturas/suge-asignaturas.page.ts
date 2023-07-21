@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Usuario } from '../Model/Usuario/usuario';
 import { LoginService } from '../servicios/login.service';
 import { FormPersoAsignPage } from '../form-perso-asign/form-perso-asign.page';
+import { Asignatura } from '../Model/Asignatura/asignatura';
+import { UsuarioService } from '../Model/Usuario/usuario.service';
 
 @Component({
   selector: 'app-suge-asignaturas',
@@ -11,13 +13,15 @@ import { FormPersoAsignPage } from '../form-perso-asign/form-perso-asign.page';
 })
 export class SugeAsignaturasPage implements OnInit {
 
-  asignaturas = [""];
+  asignaturasSuge: Asignatura[] = [];
+  asignaturasPrefe: Asignatura[] = [];
 
   usuario: Usuario | null;
 
   constructor(
     private loginService: LoginService,
     private modalController: ModalController,
+    private uservice: UsuarioService
   ) { 
     this.usuario = this.loginService.getUser();
   }
@@ -31,8 +35,24 @@ export class SugeAsignaturasPage implements OnInit {
     
   }
 
-  findAsignaturas(){
+  findAsignaturaSuge(id:number){
+    this.uservice.recomendar_asignaturas(id).subscribe(
+      results => {
+        console.log(results);
+        this.asignaturasSuge = results;
+      },
+      error => console.error(error)
+    )
+  }
 
+  findAsignaturaPrefe(id:number){
+    this.uservice.sugerir_asignaturas_por_preferencias(id).subscribe(
+      results => {
+        console.log(results);
+        this.asignaturasPrefe = results;
+      },
+      error => console.error(error)
+    )
   }
 
   verificarUsuario() {
@@ -40,12 +60,14 @@ export class SugeAsignaturasPage implements OnInit {
       if(this.usuario?.perfilEstudiante_id===null){
         this.openModal();
       }else{
-        this.findAsignaturas();
+        if (this.usuario && this.usuario.perfilEstudiante_id) {
+          this.findAsignaturaSuge(this.usuario.perfilEstudiante_id);
+          this.findAsignaturaPrefe(this.usuario.perfilEstudiante_id);
+        }
       }
     } catch (error) {
       console.error(error);
     }
-
   }
 
   async openModal(){
