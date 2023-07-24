@@ -60,6 +60,16 @@ const routes: Routes = [
     path: 'parametrizar',
     loadChildren: () => import('./parametrizar/parametrizar.module').then( m => m.ParametrizarPageModule)
   },
+  {
+    path: 'opiniones-asignatura',
+    children:[
+      {
+        path:":asignaturaID",
+        loadChildren: () => import('./opiniones-asignatura/opiniones-asignatura.module').then( m => m.OpinionesAsignaturaPageModule)
+    
+      }
+     ] 
+  },
 ];
 
 @NgModule({

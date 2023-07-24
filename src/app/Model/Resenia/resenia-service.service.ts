@@ -57,4 +57,9 @@ export class ReseniaServiceService {
   
     return this.http.post<Resenia>(url, data, { headers: headers, observe: 'response' });
   }
+
+  getReseniaAsignatura(id:number): Observable<Resenia[]>{
+    const url = `${environment.baseUrl}/resenia/asignatura/${id}`;
+    return this.net.get<Resenia[]>(url);
+  }
 }

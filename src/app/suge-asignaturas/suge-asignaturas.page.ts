@@ -81,5 +81,7 @@ export class SugeAsignaturasPage implements OnInit {
     await modal.present();
   }
 
-
+  opiniones(){
+    
+  }
 }

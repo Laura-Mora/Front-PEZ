@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button href="/suge-asignaturas">
+        <ion-icon slot="icon-only"
+                  name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Opiniones asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-label>
+      Las siguientes son las opiniones que han dado otros estudiantes sobre la asignatura.
+    </ion-label>
+    <ion-list>
+      <ion-card *ngFor="let rese of resenias">
+        <ion-card-header>
+          <ion-card-title></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>Complejidad:</ion-label>
+          <ion-label>{{rese.complejidad}}</ion-label>
+          <ion-label>Nivel de exigencia del profesor:</ion-label>
+          <ion-label>{{rese.nivelExigencia}}</ion-label>
+          <ion-label>Comentarios</ion-label>
+          <ion-label>{{rese.comentarios}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <div class="nonTransparent" *ngIf="resenias.length == 0">
+      <h1>En el momento no hay opiniones acerca de esta asignatura.</h1>
+    </div>
+  </div>
+</ion-content>
