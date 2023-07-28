@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from './usuario';
 import { PerfilEstudiante } from '../Perfil-Estudiante/perfil-estudiante';
 import { Observable } from 'rxjs';
+import { Programa } from '../Programa/programa';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +73,12 @@ export class UsuarioService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.net.get<any>(url);
+  }
+
+  sugerir_programas(id: Number){
+    const url = `${environment.baseUrl}/perfilEstudiante/sugerenciaProgramaAsignaturas/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.net.get<Programa[]>(url);
   }
 }

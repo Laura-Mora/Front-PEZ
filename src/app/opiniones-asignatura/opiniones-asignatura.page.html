@@ -8,14 +8,14 @@
         ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Opiniones asignaturas</ion-title>
+    <ion-title>Opiniones {{asignaturaSelect.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content">
     <ion-label>
-      Las siguientes son las opiniones que han dado otros estudiantes sobre la asignatura.
+      Las siguientes son las opiniones que han dado otros estudiantes sobre la asignatura {{asignaturaSelect.nombre}}.
     </ion-label>
     <ion-list>
       <ion-card *ngFor="let rese of resenias">

@@ -52,6 +52,7 @@ export class InformeAvancePage implements OnInit {
     //this.findProgramas();
     //this.findAsignaturas();
     this.mostrarAvanceEstudiante();
+    this.findProgramasSugeridos();
   }
 
   ngOnInit() {
@@ -142,4 +143,21 @@ export class InformeAvancePage implements OnInit {
     }
   }
 
+  findProgramasSugeridos(){
+    if (this.usuario?.id !== undefined) {
+      this.userService.sugerir_programas(this.usuario.id).subscribe(
+        results => {
+          this.programasSuge = results;
+          console.log(this.programas);
+        },
+        error => {
+          console.log(error);
+          
+        }
+      );
+    } else {
+      console.log('El ID del usuario no está definido.');
+      
+    }
+  }
 }
