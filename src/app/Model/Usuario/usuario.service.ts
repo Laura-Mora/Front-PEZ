@@ -81,4 +81,11 @@ export class UsuarioService {
 
     return this.net.get<Programa[]>(url);
   }
+
+  faltaProgramas(id:Number){
+    const url = `${environment.baseUrl}/usuario/faltaPrograma/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.net.get<any>(url);
+  }
 }

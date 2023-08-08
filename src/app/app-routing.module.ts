@@ -70,6 +70,10 @@ const routes: Routes = [
       }
      ] 
   },
+  {
+    path: 'falta-programa',
+    loadChildren: () => import('./falta-programa/falta-programa.module').then( m => m.FaltaProgramaPageModule)
+  },
 ];
 
 @NgModule({

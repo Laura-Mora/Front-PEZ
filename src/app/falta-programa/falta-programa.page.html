@@ -10,7 +10,7 @@
         ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title><div class="ion-text-wrap">Como vas en tu programa</div></ion-title>
+    <ion-title><div class="ion-text-wrap">¿Que puedes ver para completar el programa?</div></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -60,29 +60,4 @@
       </ion-card>
     </ion-item-group>
   </ion-list>
-  
-  <ion-button (click) = "quefalta()" [routerLink]="['/falta-programa']">
-    ¿Que puedes ver para terminar el programa?
-    <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
-  </ion-button>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Programas sugeridos</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-label>Con las asignaturas que has cursado y según tu perfil puedes, puedes cursar un
-        multiple programa, con alguno de los siguientes programas de posgrado </ion-label>
-      <ion-list>
-        <ion-item *ngFor="let item of programasSuge">
-          <ion-label>
-              {{item.nombre}}
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
 </ion-content>
-<style>
-  
-</style>

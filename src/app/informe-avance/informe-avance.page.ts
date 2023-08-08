@@ -160,4 +160,8 @@ export class InformeAvancePage implements OnInit {
       
     }
   }
+
+  quefalta(){
+
+  }
 }
