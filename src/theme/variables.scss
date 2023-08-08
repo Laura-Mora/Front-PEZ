@@ -234,3 +234,18 @@
     --ion-card-background: #1e1e1e;
   }
 }
+.item.sc-ion-label-ios-h, .item .sc-ion-label-ios-h, .alert-radio-label.sc-ion-alert-ios
+  {
+    white-space: normal;
+  }
+
+
+  .alert-button-inner.sc-ion-alert-ios{
+    height: auto;
+  }
+
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 19px;
+}
