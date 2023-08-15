@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Programa } from '../Model/Programa/programa';
+import { Router } from '@angular/router';
+import { ProgramaService } from '../Model/Programa/programa.service';
+import { ToastController } from '@ionic/angular';
+import { Reporte } from '../Model/Reporte/reporte';
 
 @Component({
   selector: 'app-reporte-asign',
@@ -7,20 +12,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReporteAsignPage implements OnInit {
 
-  constructor() { }
+  programas: Programa[]=[];
+  programaSeleccionado: Number = 0;
+
+  constructor(
+    private router: Router,
+    private programaService: ProgramaService,
+    private toastController: ToastController
+  ) { }
 
   ngOnInit() {
+    this.findProgramas();
   }
 
   consultar(){
 
   }
 
-  buscarPrograma(event: any){
+  enviarCorreo(){
 
   }
 
-  buscarAsignatura(event: any){
 
+  findProgramas(){
+    this.programaService.getProgramas().subscribe(
+      results => {
+        console.log(results);
+        this.programas = results;
+      },
+      error => console.error(error)
+    )
   }
+
 }

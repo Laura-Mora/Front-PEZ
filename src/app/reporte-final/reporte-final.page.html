@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/reporte-asign">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+    <ion-title>Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label class="ion-text-wrap"> Nota: Si observa que todos los porcentajes estan en 0, significa que no hay aún reseñas de la asignatura.</ion-label>
+  <ion-list>
+    <ion-card *ngFor="let reporte of reportes">
+      <ion-card-header>
+        <ion-card-title>{{reporte.nombre_asignatura}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+          El {{reporte.porcentaje_aprendizaje}}% de estudiantes que han reseñado la asignatura considera que aprendio. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_tematicaRequeridas}}% de estudiantes que han reseñado la asignatura considera que las temáticas abordadas cumplieron con lo que requería. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_estrategiasPedagogicasProfesor}}% de estudiantes que han reseñado la asignatura considera que las estrategias pedagógicas llevadas por el profesor fueron de su agrado. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_actividadesAsignatura}}% de estudiantes que han reseñado la asignatura considera que las actividades propias de la asignatura realizadas fueron de su agrado. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_agradoProfesor}}% de estudiantes que han reseñado la asignatura considera que fue de su agrado el profesor. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_cargaAsigantura}}% de estudiantes que han reseñado la asignatura considera que la carga de trabajo para la asignatura es adecuada. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_entregaNotas}}% de estudiantes que han reseñado la asignatura considera que las calificaciones fueron entregadas a tiempo. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_retroalimentacion}}% de estudiantes que han reseñado la asignatura considera oportuna la retroalimentación dada a las diferentes calificaciones obtenidas. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_complejidad_alta}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene una complejidad alta. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_complejidad_media}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene una complejidad media. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_complejidad_baja}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene una complejidad baja. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_vida}}% de estudiantes que han reseñado la asignatura considera que la asignatura le sirvio para la vida. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_trabajo}}% de estudiantes que han reseñado la asignatura considera que la asignatura le sirvio para el trabajo. <br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_nivelExigencia_alta}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene un nivel de exigencia alto.<br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_nivelExigencia_media}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene un nivel de exigencia medio.<br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_nivelExigencia_baja}}% de estudiantes que han reseñado la asignatura considera que la asignatura tiene un nivel de exigencia bajo.<br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_incidencia_alta}}% de estudiantes que han reseñado la asignatura considera que el profesor tuvo una incidencia alta en la elección de la asignatura.<br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_incidencia_media}}% de estudiantes que han reseñado la asignatura considera que el profesor tuvo una incidencia media en la elección de la asignatura.<br>
+        </ion-label>
+        <ion-label>
+          El {{reporte.porcentaje_incidencia_baja}}% de estudiantes que han reseñado la asignatura considera que el profesor tuvo una incidencia baja en la elección de la asignatura.<br>
+        </ion-label>
+        <ion-list>
+          <ion-label>Comentarios: <br></ion-label>
+          <ion-label *ngFor="let comenrario of reporte.comentarios">
+            {{comenrario}}
+          </ion-label>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

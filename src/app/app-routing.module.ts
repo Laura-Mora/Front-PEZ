@@ -74,6 +74,16 @@ const routes: Routes = [
     path: 'falta-programa',
     loadChildren: () => import('./falta-programa/falta-programa.module').then( m => m.FaltaProgramaPageModule)
   },
+  {
+    path: 'reporte-final',
+    children: [
+      {
+        path:":programaSeleccionado",
+        loadChildren: () => import('./reporte-final/reporte-final.module').then( m => m.ReporteFinalPageModule)
+      }
+    ]
+    
+  },
 ];
 
 @NgModule({
