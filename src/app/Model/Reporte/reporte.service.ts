@@ -16,4 +16,19 @@ export class ReporteService {
 
     return this.net.get<any>(url);
   }
+
+  reporteExcelPrograma(id:Number, correo:string){
+    const url = `${environment.baseUrl}/usuario/reporteProgramaExcel`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    const data = {
+      id: Number(id),
+      correo: correo
+    };
+
+    console.log(JSON.stringify(data));
+
+    return this.net.post<any>(url, data);
+
+  }
 }
