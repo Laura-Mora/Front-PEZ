@@ -88,4 +88,19 @@ export class UsuarioService {
 
     return this.net.get<any>(url);
   }
+
+  avancePrograSuge(idUsuario:Number,idPrograma:Number){
+    const url = `${environment.baseUrl}/usuario/faltaProgramaSuge`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    const data = {
+      idEstudiante: Number(idUsuario),
+      idPrograma: Number(idPrograma)
+    };
+
+    console.log(JSON.stringify(data));
+
+    return this.net.post<any>(url,data);
+
+  }
 }

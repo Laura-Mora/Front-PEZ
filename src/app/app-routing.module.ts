@@ -84,6 +84,17 @@ const routes: Routes = [
     ]
     
   },
+  {
+    path: 'avance-progra-suge',
+    children: [
+      {
+        path:":programaID",
+        loadChildren: () => import('./avance-progra-suge/avance-progra-suge.module').then( m => m.AvancePrograSugePageModule)
+      }
+      
+    ]
+    
+  },
 ];
 
 @NgModule({

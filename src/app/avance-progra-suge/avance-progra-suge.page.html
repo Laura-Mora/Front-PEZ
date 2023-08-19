@@ -3,30 +3,28 @@
     <ion-buttons class="header_btn"
                  slot="secondary">
       <ion-button
-        href="/home">
+        href="/informe-avance">
         <ion-icon
           slot="icon-only"
           name="arrow-back"
         ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title><div class="ion-text-wrap">Como vas en tu programa</div></ion-title>
+    <ion-title>Avance Programa Sugerido</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item-group *ngFor="let programa of programas">
-      <ion-card>
+  <ion-card>
         <ion-card-header>
-          <ion-card-title>{{ programa.programa }}</ion-card-title>
+          <ion-card-title>Programa sugerido: {{ programas.programa }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-list>
             <ion-item-divider color="secondary">
               Componentes
             </ion-item-divider>
-            <ion-item-group *ngFor="let componente of programa.componentes">
+            <ion-item-group *ngFor="let componente of programas.componentes">
               <ion-item>
                 <ion-label>{{ componente.nombre }}</ion-label>
               </ion-item>
@@ -58,36 +56,4 @@
           </ion-list>
         </ion-card-content>
       </ion-card>
-    </ion-item-group>
-  </ion-list>
-  
-  <ion-button (click) = "quefalta()" [routerLink]="['/falta-programa']">
-    ¿Que puedes ver para terminar el programa?
-    <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
-  </ion-button>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Programas sugeridos</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-label>Con las asignaturas que has cursado y según tu perfil puedes, puedes cursar un
-        multiple programa, con alguno de los siguientes programas de posgrado </ion-label>
-        <ion-list>
-          <ion-radio-group [(ngModel)]="idProgramaSelect">
-            <ion-item *ngFor="let item of programasSuge">
-              <ion-label>{{ item.nombre }}</ion-label>
-              <ion-radio [value]="item.id"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      <ion-button (click) = "avanceProgramaSuge()" [routerLink]="['/avance-progra-suge',idProgramaSelect]">
-          ¿Como vas en ese programa?
-        <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
-      </ion-button>         
-    </ion-card-content>
-  </ion-card>
 </ion-content>
-<style>
-  
-</style>

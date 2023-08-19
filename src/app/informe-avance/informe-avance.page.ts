@@ -35,6 +35,7 @@ export class InformeAvancePage implements OnInit {
   programasSuge: Programa[] = [];
   usuario: Usuario | null;
   perfil: PerfilEstudiante | undefined;
+  idProgramaSelect: Number = 0;
 
   constructor(
     private loginService: LoginService,
@@ -163,5 +164,9 @@ export class InformeAvancePage implements OnInit {
 
   quefalta(){
 
+  }
+
+  avanceProgramaSuge(){
+    
   }
 }
