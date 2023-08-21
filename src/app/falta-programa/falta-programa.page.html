@@ -24,12 +24,12 @@
         <ion-card-content>
           <ion-list>
             <ion-item-divider color="secondary">
-              Componentes
             </ion-item-divider>
             <ion-item-group *ngFor="let componente of programa.componentes">
               <ion-item>
-                <ion-label>{{ componente.nombre }}</ion-label>
+                <ion-label>Componente: {{ componente.nombre }}</ion-label>
               </ion-item>
+              <ion-item>Creditos para completar el componente: {{componente.cantCreditos - componente.creditosVistos}}</ion-item>
               <ion-item-divider color="light">
                 Asignaturas
               </ion-item-divider>
@@ -39,12 +39,12 @@
                 </ion-item>
               </ion-item-group>
               <ion-item-divider color="light">
-                Subcomponentes
               </ion-item-divider>
               <ion-item-group *ngFor="let subcomponente of componente.subcomponentes">
                 <ion-item>
-                  <ion-label >{{ subcomponente.nombre }}</ion-label>
+                  <ion-label >Subcomponente: {{ subcomponente.nombre }}</ion-label>
                 </ion-item>
+                <ion-item>Creditos para completar el subcomponente: {{subcomponente.cantCreditos - subcomponente.creditosVistos}}</ion-item>
                 <ion-item-divider color="light">
                   Asignaturas
                 </ion-item-divider>
