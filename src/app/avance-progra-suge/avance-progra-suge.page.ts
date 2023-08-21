@@ -4,6 +4,7 @@ import { Usuario } from '../Model/Usuario/usuario';
 import { LoginService } from '../servicios/login.service';
 import { UsuarioService } from '../Model/Usuario/usuario.service';
 import { ActivatedRoute } from '@angular/router';
+import { Asignatura } from '../Model/Asignatura/asignatura';
 
 @Component({
   selector: 'app-avance-progra-suge',
@@ -15,6 +16,7 @@ export class AvancePrograSugePage implements OnInit {
   programas: Programa = new Programa();
   usuario: Usuario | null;
   idPrograma: Number = 0;
+  asignaturasC: Asignatura[] = [];
 
   constructor(
     private activatedRoute :ActivatedRoute, 
@@ -31,6 +33,7 @@ export class AvancePrograSugePage implements OnInit {
       const programaID = paramMap.get('programaID');
       if (programaID !== null) {
         this.mostrarAvanceEstudiante(+programaID);
+        this.asiganturasComun(+programaID);
       } 
     });
   }
@@ -42,6 +45,25 @@ export class AvancePrograSugePage implements OnInit {
         results => {
           this.programas = JSON.parse(results);
           console.log(this.programas);
+        },
+        error => {
+          console.log(error);
+          
+        }
+      );
+    } else {
+      console.log('El ID del usuario no está definido.');
+      
+    }
+  }
+
+  asiganturasComun(id:Number){
+    this.idPrograma = id;
+    if (this.usuario?.id !== undefined) {
+      this.userService.asignaturaComun(this.usuario.id,this.idPrograma).subscribe(
+        results => {
+          this.asignaturasC = results;
+          console.log(this.asignaturasC);
         },
         error => {
           console.log(error);
