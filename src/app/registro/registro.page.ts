@@ -107,13 +107,18 @@ export class RegistroPage implements OnInit {
               this.loginService.storeUser(usuario, authorizationHeader);
               //this.router.navigate(["formulario_registro"]);
             }
-            this.presentToast('top' );
+            this.presentToast('top','El usuario ha sido creado' );
           }
         },
         error => {
           this.error_visibility = true;
           this.mensajeError = error;
           console.error(error);
+          if (error.status === 400 && error.error.detail === "El cooreo que ingreso ya está en uso") {
+            this.presentToast('middle','El correo ingresado ya está en uso. Por favor, ingrese otro correo.');
+          } else {
+            console.error(error);
+          }
         }
       );
     }
@@ -124,9 +129,9 @@ export class RegistroPage implements OnInit {
     this.router.navigate(["login"]);
   }
 
-  async presentToast(position: 'top' | 'middle' | 'bottom') {
+  async presentToast(position: 'top' | 'middle' | 'bottom', message:string) {
     const toast = await this.toastController.create({
-      message: 'El usuario ha sido creado',
+      message,
       duration: 1500,
       position: position,
     });

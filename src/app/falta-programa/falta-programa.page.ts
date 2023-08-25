@@ -12,6 +12,7 @@ import { ComponenteService } from '../Model/Componente/componente.service';
 import { SubComponenteService } from '../Model/SubComponente/sub-componente.service';
 import { forkJoin } from 'rxjs';
 import { UsuarioService } from '../Model/Usuario/usuario.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-falta-programa',
@@ -29,6 +30,7 @@ export class FaltaProgramaPage implements OnInit {
   perfil: PerfilEstudiante | undefined;
 
   constructor(
+    public toastCtrl: ToastController,
     private loginService: LoginService,
     private proService: ProgramaService,
     private perfilService: PerfilEstudianteService,
@@ -62,6 +64,35 @@ export class FaltaProgramaPage implements OnInit {
       console.log('El ID del usuario no está definido.');
       
     }
+  }
+
+  enviarCorreo(){
+    if (this.usuario?.id !== undefined) {
+      this.userService.avancePDF(this.usuario.id).subscribe(
+        results => {
+          console.log(results);
+        },
+        error => {
+          console.log(error);
+          
+        }
+      );
+      this.presentToast("A tu correo llegara el reporte solicitado");
+    } else {
+      console.log('El ID del usuario no está definido.');
+      
+    }
+
+  }
+  
+  async presentToast(mensaje: any){
+    const toast = await this.toastCtrl.create(
+      {
+        message: mensaje,
+        duration: 4000
+      }
+    );
+    toast.present();
   }
 
 }
