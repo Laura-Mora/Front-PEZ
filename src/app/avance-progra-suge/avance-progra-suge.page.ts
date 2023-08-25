@@ -5,6 +5,7 @@ import { LoginService } from '../servicios/login.service';
 import { UsuarioService } from '../Model/Usuario/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 import { Asignatura } from '../Model/Asignatura/asignatura';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-avance-progra-suge',
@@ -19,6 +20,7 @@ export class AvancePrograSugePage implements OnInit {
   asignaturasC: Asignatura[] = [];
 
   constructor(
+    public toastCtrl: ToastController,
     private activatedRoute :ActivatedRoute, 
     private loginService: LoginService,
     private userService: UsuarioService
@@ -74,5 +76,33 @@ export class AvancePrograSugePage implements OnInit {
       console.log('El ID del usuario no está definido.');
       
     }
+  }
+
+  porgramaSugePDF(){
+    if (this.usuario?.id !== undefined) {
+      this.userService.programaSuguePDG(this.usuario.id,this.idPrograma).subscribe(
+        results => {
+          console.log(results);
+        },
+        error => {
+          console.log(error);
+          
+        }
+      );
+      this.presentToast("A tu correo llegara el reporte solicitado");
+    } else {
+      console.log('El ID del usuario no está definido.');
+      
+    }
+  }
+
+  async presentToast(mensaje: any){
+    const toast = await this.toastCtrl.create(
+      {
+        message: mensaje,
+        duration: 4000
+      }
+    );
+    toast.present();
   }
 }
