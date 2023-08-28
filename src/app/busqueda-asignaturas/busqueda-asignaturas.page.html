@@ -18,7 +18,7 @@
   <div class="content">
     <ion-item>
       <ion-searchbar placeholder="Buscar Asignatura..."  animated (ionChange)="buscarAsignatura ($event)"></ion-searchbar>
-      <ion-button>
+      <ion-button (click)="openModal()">
         <ion-icon name="settings-outline"></ion-icon>
       </ion-button>
     </ion-item>

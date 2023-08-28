@@ -15,6 +15,7 @@ import { Tematica } from '../Model/Tematica/tematica';
 import { TematicaService } from '../Model/Tematica/tematica.service';
 import { LoginService } from '../servicios/login.service';
 import { Usuario } from '../Model/Usuario/usuario';
+import { FormPersoAsignPage } from '../form-perso-asign/form-perso-asign.page';
 
 @Component({
   selector: 'app-busqueda-asignaturas',
@@ -43,6 +44,7 @@ export class BusquedaAsignaturasPage implements OnInit {
   collapseCard = true;
 
   constructor(
+    private modalController: ModalController,
     private loginService: LoginService,
     public router: Router,
     public navCtrl : NavController,
@@ -161,4 +163,11 @@ export class BusquedaAsignaturasPage implements OnInit {
   loadData($event: any){
 
   }
+
+  openModal(){
+    this.modalController.create({component:FormPersoAsignPage}).then((modalElement)=>{
+      modalElement.present();
+    });
+  }
+  
 }
