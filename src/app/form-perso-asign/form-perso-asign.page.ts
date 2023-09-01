@@ -17,6 +17,8 @@ import { ModoEnsenianza } from '../Model/Modo-Enseñanza/modo-ensenianza';
 import { LoginService } from '../servicios/login.service';
 import { Usuario } from '../Model/Usuario/usuario';
 import { UsuarioService } from '../Model/Usuario/usuario.service';
+import { PerfilEstudianteService } from '../Model/Perfil-Estudiante/perfil-estudiante.service';
+import { PerfilEstudiante } from '../Model/Perfil-Estudiante/perfil-estudiante';
 
 @Component({
   selector: 'app-form-perso-asign',
@@ -34,6 +36,7 @@ export class FormPersoAsignPage implements OnInit {
   modos: ModoEnsenianza[] = [];
 
   usuario: Usuario | null;
+  perfilEstudiante: PerfilEstudiante = new PerfilEstudiante; 
 
   textoBuscar='';
   tematicaBuscar='';
@@ -65,7 +68,8 @@ export class FormPersoAsignPage implements OnInit {
     private hservice: HorarioService,
     private ccservice: ComponenteClaseService,
     private modoservice: ModoEnsenianzaService,
-    private userservice: UsuarioService
+    private userservice: UsuarioService,
+    private perfservice: PerfilEstudianteService
   ) { 
     this.usuario = this.loginService.getUser();
   }
@@ -78,6 +82,7 @@ export class FormPersoAsignPage implements OnInit {
     this.findHorarios();
     this.findComponentesClase();
     this.findModosEnsenianza();
+    this.findPerfilUsuario();
   }
 
   closeModal(){
@@ -281,4 +286,25 @@ export class FormPersoAsignPage implements OnInit {
     toast.present();
   }
 
+  findPerfilUsuario(){
+    try {
+      if(this.usuario?.perfilEstudiante_id!==null){
+        const perfilEstudianteId = this.usuario?.perfilEstudiante_id;
+
+        if (typeof perfilEstudianteId === 'number') {
+          this.perfservice.getPerfilById(perfilEstudianteId).subscribe(
+            results =>{
+              console.log(results);
+              this.perfilEstudiante = results;
+
+            },
+            error => console.error(error)
+          );
+        }
+    }
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
 }

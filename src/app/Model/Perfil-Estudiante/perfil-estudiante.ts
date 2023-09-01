@@ -16,11 +16,11 @@ export class PerfilEstudiante {
     asignaturasGustadas: Asignatura[] = [];
     asignaturasNoGustadas: Asignatura[] = [];
 
-    tematicasGustan: Tematica[] = [];
-    actividadesGustan: Actividad[] = [];
-    competenciasGustan: Competencia[] = [];
-    modoPreferencia: ModoEnsenianza[] = [];
-    horarioPreferencia: Horario[] = [];
+    tematicasGusto: Tematica[] = [];
+    actividadesGusto: Actividad[] = [];
+    competenciasGusto: Competencia[] = [];
+    modoEnsenianzaPreferencia: ModoEnsenianza[] = [];
+    horariosPreferencias: Horario[] = [];
     modalidadPreferencia: ComponenteClase[] = [];
 
     constructor(){
