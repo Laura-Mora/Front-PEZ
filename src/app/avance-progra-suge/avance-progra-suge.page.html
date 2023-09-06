@@ -10,7 +10,7 @@
         ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Avance Programa Sugerido</ion-title>
+    <ion-title><div class="ion-text-wrap">Avance Programa Sugerido</div></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,6 +19,9 @@
         <ion-card-header>
           <ion-card-title>Programa sugerido: {{ programas.programa }}</ion-card-title>
         </ion-card-header>
+        <ion-item>
+          <ion-label>Haz cursado {{ programas.cantCreditosCursados }} de {{ programas.cantCreditos }} créditos</ion-label>
+        </ion-item>
         <ion-card-content>
           <ion-list>
             <ion-item-divider color="secondary">
