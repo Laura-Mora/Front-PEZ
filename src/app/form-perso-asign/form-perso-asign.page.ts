@@ -47,6 +47,7 @@ export class FormPersoAsignPage implements OnInit {
   areaDesempenio: string = "";
   motivo: string = "";
   javeriano: boolean = true;
+  ingles: boolean = false;
   semestre: number = 0;
   asignaturasCursadas: number[] = [];
   tematicasUsuario: number[] = [];
@@ -256,6 +257,7 @@ export class FormPersoAsignPage implements OnInit {
         this.areaDesempenio,
         this.motivo,
         this.javeriano,
+        this.ingles,
         semestreNum,
         this.asignaturasCursadas,
         this.tematicasUsuario,

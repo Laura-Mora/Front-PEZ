@@ -77,7 +77,22 @@
       </ion-radio-group>
     </ion-list>
 
-    
+    <ion-item>
+      <ion-label>¿Ya completaste tu requisito de ingles?</ion-label>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="true" [(ngModel)]="ingles">
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="end" value="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="end" value="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
     <ion-item>
       <ion-label>Anteriormente seleccionate las siguientes asignaturas</ion-label>
     </ion-item>
