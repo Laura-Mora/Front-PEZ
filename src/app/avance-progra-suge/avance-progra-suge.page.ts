@@ -15,6 +15,7 @@ import { ToastController } from '@ionic/angular';
 export class AvancePrograSugePage implements OnInit {
 
   programas: Programa = new Programa();
+  faltaPrograma: Programa = new Programa();
   usuario: Usuario | null;
   idPrograma: Number = 0;
   asignaturasC: Asignatura[] = [];
@@ -36,6 +37,7 @@ export class AvancePrograSugePage implements OnInit {
       if (programaID !== null) {
         this.mostrarAvanceEstudiante(+programaID);
         this.asiganturasComun(+programaID);
+        this.mostrarAsignaturasCursarPrograma(+programaID)
       } 
     });
   }
@@ -104,5 +106,24 @@ export class AvancePrograSugePage implements OnInit {
       }
     );
     toast.present();
+  }
+
+  mostrarAsignaturasCursarPrograma(id:Number){
+    this.idPrograma = id;
+    if (this.usuario?.id !== undefined) {
+      this.userService.cursarPrograSuge(this.usuario.id,this.idPrograma).subscribe(
+        results => {
+          this.faltaPrograma = JSON.parse(results);
+          console.log(this.faltaPrograma);
+        },
+        error => {
+          console.log(error);
+          
+        }
+      );
+    } else {
+      console.log('El ID del usuario no está definido.');
+      
+    }
   }
 }
