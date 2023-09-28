@@ -95,6 +95,37 @@ const routes: Routes = [
     ]
     
   },
+  {
+    path: 'sub-menu-avance-programa',
+    loadChildren: () => import('./sub-menu-avance-programa/sub-menu-avance-programa.module').then( m => m.SubMenuAvanceProgramaPageModule)
+  },
+  {
+    path: 'sub-menu-programa-suge',
+    children: [
+      {
+        path:":programaID",
+        loadChildren: () => import('./sub-menu-programa-suge/sub-menu-programa-suge.module').then( m => m.SubMenuProgramaSugePageModule)
+      }
+    ]
+  },
+  {
+    path: 'falta-programa-suge',
+    children: [
+      {
+        path:":programaID",
+        loadChildren: () => import('./falta-programa-suge/falta-programa-suge.module').then( m => m.FaltaProgramaSugePageModule)
+      }
+    ]
+  },
+  {
+    path: 'asignaturas-comun',
+    children: [
+      {
+        path:":programaID",
+        loadChildren: () => import('./asignaturas-comun/asignaturas-comun.module').then( m => m.AsignaturasComunPageModule)
+      }
+    ]
+    },
 ];
 
 @NgModule({

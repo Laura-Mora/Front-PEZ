@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+      [routerLink]="['/sub-menu-programa-suge',idPrograma]">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Asignaturas Programa Sugerido</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Las asiganturas que sirven para : {{ faltaPrograma.programa }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Haz cursado {{ faltaPrograma.cantCreditosCursados }} de {{ faltaPrograma.cantCreditos }} créditos</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label *ngIf="faltaPrograma.requisitoInglesCumplido">
+          Has completado el requisito de inglés
+        </ion-label>
+        <ion-label *ngIf="!faltaPrograma.requisitoInglesCumplido">
+          Aún no has completado el requisito de inglés.
+        </ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item-divider color="secondary">
+        </ion-item-divider>
+        <ion-item-group *ngFor="let componente of faltaPrograma.componentes">
+          <ion-item>
+            <ion-label>Componente: {{ componente.nombre }}</ion-label>
+          </ion-item>
+          <ion-item>Haz cursado {{componente.creditosVistos}} creditos de {{componente.cantCreditos}} creditos</ion-item>
+          <ion-item-divider color="light">
+            Asignaturas
+          </ion-item-divider>
+          <ion-item-group *ngFor="let asignatura of componente.asignaturas">
+            <ion-item>
+              <ion-label>{{ asignatura }}</ion-label>
+            </ion-item>
+          </ion-item-group>
+          <ion-item-divider color="light">
+          </ion-item-divider>
+          <ion-item-group *ngFor="let subcomponente of componente.subcomponentes">
+            <ion-item>
+              <ion-label >Subcomponente: {{ subcomponente.nombre }}</ion-label>
+            </ion-item>
+            <ion-item>Haz cursado {{subcomponente.creditosVistos}} creditos de {{subcomponente.cantCreditos}} creditos</ion-item>
+            <ion-item-divider color="light">
+              Asignaturas
+            </ion-item-divider>
+            <ion-item-group *ngFor="let asignatura of subcomponente.asignaturas">
+              <ion-item>
+                <ion-label>{{ asignatura }}</ion-label>
+              </ion-item>
+            </ion-item-group>
+          </ion-item-group>
+        </ion-item-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
