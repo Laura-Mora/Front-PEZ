@@ -15,9 +15,20 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-searchbar placeholder="Buscar Asignatura..."  animated (ionChange)="buscarAsignatura ($event)"></ion-searchbar>
+  </ion-item>
   <ion-label class="ion-text-wrap"> Nota: Si observa que todos los porcentajes estan en 0, significa que no hay aún reseñas de la asignatura.</ion-label>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Asignaturas con reseñas</ion-label>
+        <ion-toggle (ionChange)="buscarAsignaturaConResenia ($event)"></ion-toggle>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
   <ion-list>
-    <ion-card *ngFor="let reporte of reportes">
+    <ion-card *ngFor="let reporte of reportes | filtroReseniaAsignatura:textoBuscar | filtroExisteResenia:asignaturasConResenias">
       <ion-card-header>
         <ion-card-title>{{reporte.nombre_asignatura}}</ion-card-title>
       </ion-card-header>

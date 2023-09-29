@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Reporte } from '../Model/Reporte/reporte';
 import { ReporteService } from '../Model/Reporte/reporte.service';
 import { ActivatedRoute } from '@angular/router';
+import { AnyARecord } from 'dns';
 
 @Component({
   selector: 'app-reporte-final',
@@ -11,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ReporteFinalPage implements OnInit {
 
   reportes: Reporte[] = [];
+  textoBuscar='';
+  asignaturasConResenias: Boolean = false;
 
   constructor(
     private activatedRoute :ActivatedRoute,
@@ -37,6 +40,19 @@ export class ReporteFinalPage implements OnInit {
   }
   loadData($event: any){
 
+  }
+  buscarAsignatura (event: any){
+    const texto = event.target.value;
+    this.textoBuscar = texto;
+  }
+
+  buscarAsignaturaConResenia (event:any){
+    if(this.asignaturasConResenias){
+      this.asignaturasConResenias = false;
+    } else {
+      this.asignaturasConResenias = true;
+    }
+    console.log(this.asignaturasConResenias);
   }
 
 }
