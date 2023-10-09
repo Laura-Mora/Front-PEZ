@@ -17,7 +17,7 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item><ion-label>Complejidad: {{asignaturaSelect.complejidad}}</ion-label></ion-item>
-        <ion-item><ion-label>Creditos: {{asignaturaSelect.creditos}}</ion-label></ion-item>
+        <ion-item><ion-label>Créditos: {{asignaturaSelect.creditos}}</ion-label></ion-item>
         <ion-item><ion-label>Población objetivo: {{asignaturaSelect.poblacionObjetivo}}</ion-label></ion-item>
         <ion-item><ion-label>Horarios:</ion-label></ion-item>
         <ion-item-group *ngFor="let hoario of asignaturaSelect.horarios">
@@ -26,7 +26,7 @@
           </ion-item>
         </ion-item-group>
         <ion-item><ion-label>Profesores</ion-label></ion-item>
-        <ion-item><ion-label>Tematicas</ion-label></ion-item>
+        <ion-item><ion-label>Temáticas</ion-label></ion-item>
         <ion-item-group *ngFor="let tema of asignaturaSelect.tematicas">
           <ion-item>
             <ion-label>{{ tema.nombre }}</ion-label>
@@ -91,7 +91,7 @@
               </ion-item>
             </ion-radio-group>
           </ion-list>
-          <ion-label>¿Las actividades propias de la asignatura realizadas fueron de su agrado? (Ejm: Talleres, proyectos, parciales...) </ion-label>
+          <ion-label>¿Las actividades, propias de la asignatura, realizadas fueron de su agrado? (Ejm: Talleres, proyectos, parciales...) </ion-label>
           <ion-list>
             <ion-radio-group value="true" [(ngModel)]="actividadesAsig">
               <ion-item>
@@ -160,7 +160,7 @@
               </ion-item>
             </ion-radio-group>
           </ion-list>
-          <ion-label>¿Que nivel de exigencia le asignaría la asignatura? </ion-label>
+          <ion-label>¿Que nivel de exigencia le asignaría a la asignatura? </ion-label>
           <ion-list>
             <ion-radio-group value="medio" [(ngModel)]="exigenciaAsig">
               <ion-item>
@@ -220,7 +220,7 @@
               </ion-item>
             </ion-radio-group>
           </ion-list>
-          <ion-label>Por favor deje un comentario sobre la asignatura para que los demás estudiantes se puedan dar una guía de esta. </ion-label>
+          <ion-label>Por favor deje un comentario sobre la asignatura, para que los demás estudiantes se puedan dar una guía de esta. </ion-label>
           <ion-item>
             <ion-input placeholder="Comentario" [(ngModel)]="comentarios"></ion-input>
           </ion-item>

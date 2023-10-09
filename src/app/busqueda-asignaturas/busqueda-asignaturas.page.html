@@ -28,7 +28,7 @@
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
         <ion-item>
-          <ion-label>Tematica</ion-label>
+          <ion-label>Temática</ion-label>
           <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsiganturaTematica($event)">
               <ion-select-option *ngFor="let tematica of tematicas" [value]="tematica.nombre">{{tematica.nombre}}</ion-select-option>
             </ion-select>
@@ -71,7 +71,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-label>
-            Creditos: {{asignatura.creditos}}
+            Créditos: {{asignatura.creditos}}
           </ion-label>
           <ion-label>
             Complejidad: {{asignatura.complejidad}}
