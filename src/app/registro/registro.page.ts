@@ -66,6 +66,12 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
+  validateEmail(email: string): boolean {
+    // Regular expression to validate an email address
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  }
+
   async onRegister() {
 
    if (this.nombre.length === 0) {
@@ -88,7 +94,12 @@ export class RegistroPage implements OnInit {
         "Programa no seleccionado",
         "Para continuar con el registro debes seleccionar el programa en el cual te encuentras."
       );
-    } else {
+    } else if (!this.validateEmail(this.email)) {
+      await this.alertaElementoNoSeleccionado(
+        "Correo inválido",
+        "Por favor, ingrese un correo válido."
+      );
+    }else {
       
       this.loginService.register(
         this.nombre,

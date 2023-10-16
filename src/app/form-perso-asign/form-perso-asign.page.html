@@ -103,7 +103,7 @@
       </ion-item>
     </ion-item-group>
     <ion-item>
-      <ion-label>Asiganturas Cursadas</ion-label>
+      <ion-label>Asignaturas Cursadas</ion-label>
     </ion-item>
     
     <ion-searchbar placeholder="Buscar asignatura..." animated (ionChange)="buscarAsignatura($event)"></ion-searchbar>
@@ -114,7 +114,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Anteriormente seleccionate las siguientes tematicas</ion-label>
+      <ion-label>Anteriormente seleccionate las siguientes temáticas</ion-label>
     </ion-item>
 
     <ion-item-group *ngFor="let tematica of perfilEstudiante.tematicasGusto">
@@ -123,9 +123,9 @@
       </ion-item>
     </ion-item-group>
     <ion-item>
-      <ion-label>Tematicas</ion-label>
+      <ion-label>Temáticas</ion-label>
     </ion-item>
-    <ion-searchbar placeholder="Buscar tematica..."  animated (ionChange)="buscarTematica($event)"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar temática..."  animated (ionChange)="buscarTematica($event)"></ion-searchbar>
     <ion-item>
       <ion-select multiple [(ngModel)]="tematicasUsuario">
         <ion-select-option *ngFor="let tematica of tematicas | filtroTematica:tematicaBuscar" [value]="tematica.id">{{tematica.nombre}}</ion-select-option>
