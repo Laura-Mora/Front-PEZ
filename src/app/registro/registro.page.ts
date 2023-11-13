@@ -118,7 +118,7 @@ export class RegistroPage implements OnInit {
               this.loginService.storeUser(usuario, authorizationHeader);
               //this.router.navigate(["formulario_registro"]);
             }
-            this.presentToast('top','El usuario ha sido creado' );
+            this.presentToast('middle','El usuario ha sido creado' );
           }
         },
         error => {

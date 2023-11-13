@@ -46,4 +46,11 @@ import { FiltroExisteReseniaPipe } from './filtro-existe-resenia.pipe';
     FiltroExisteReseniaPipe
   ]
 })
-export class PipesModule { }
+export class PipesModule {
+  static forRoot() {
+    return {
+        ngModule: PipesModule,
+        providers: [],
+    };
+ }
+ }

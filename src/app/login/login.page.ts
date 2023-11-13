@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
                 this.router.navigate(["home"]);
               } else {
                 this.router.navigate(["home-directores"]);
-              }              
+              }            
           
             } else {
               // El valor es nulo, puedes manejar este caso según sea necesario
