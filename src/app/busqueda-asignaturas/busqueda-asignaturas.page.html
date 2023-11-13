@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/home">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Asignaturas</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-searchbar placeholder="Buscar Asignatura..."  animated (ionChange)="buscarAsignatura ($event)"></ion-searchbar>
+      <ion-button (click)="openModal()">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>Filtros</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <ion-item>
+          <ion-label>Temática</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsiganturaTematica($event)">
+              <ion-select-option *ngFor="let tematica of tematicas" [value]="tematica.nombre">{{tematica.nombre}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Competencia</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsiganturaCompetencia($event)">
+            <ion-select-option *ngFor="let competencia of competencias" [value]="competencia.nombre">{{competencia.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Modo Enseñanza</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaModo($event)">
+            <ion-select-option *ngFor="let modo of modosEnse" [value]="modo.id">{{modo.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Modalidad</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaModalidad($event)">
+            <ion-select-option *ngFor="let modalidad of modalidades" [value]="modalidad.id">{{modalidad.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Complejidad</ion-label>
+          <ion-select class="custom-options" placeholder="Select One" (ionChange)="buscarAsignaturaComplejidad($event)">
+            <ion-select-option *ngFor="let complejidad of complejidades" [value]="">{{complejidad}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button (click) = "borrarFiltros()">
+          Borrar filtros
+          <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>  
+
+    <ion-list>
+      <ion-card *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar | filtroAsignaturaTematicaTexto: textoBuscar | filtroAsignaturaCompetenciaTexto: textoBuscar | filtroAsignaturaModalidad: modalidadSelect | filtroAsignaturaComplejidad:complejidadSelect | filtroAsignaturaTematicaSelect:tematicaSelect | filtroAsignaturaCompetenciaSelect:competenciaSelect | filtroAsignaturaModo:modoSelect">
+        <ion-card-header>
+          <ion-card-title>{{asignatura.nombre}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>
+            Créditos: {{asignatura.creditos}}
+          </ion-label>
+          <ion-label>
+            Complejidad: {{asignatura.complejidad}}
+          </ion-label>
+        </ion-card-content>
+        <ion-button (click) = "infoAsignatura()" [routerLink]="['/busqueda-asignaturas',asignatura.id]">
+          Ver más
+          <ion-icon  size="small" slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

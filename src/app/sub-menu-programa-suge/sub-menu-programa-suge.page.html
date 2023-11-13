@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/sub-menu-avance-programa">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Menú Programa Sugerido </div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-list>
+      <ion-card [routerLink]="['/avance-progra-suge',idProgramaSelect]">
+        <ion-card-header>
+          <ion-card-title>Informe de avance sugerido</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Conoce tu informe de avance en el programa sugerido aquí.
+              
+        </ion-card-content>
+      </ion-card>
+      <ion-card [routerLink]="['/falta-programa-suge',idProgramaSelect]">
+        <ion-card-header>
+          <ion-card-title>¿Qué puedes ver para completar el programa sugerido?</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Conoce cuales asignaturas puedes cursar, para completar el programa acádemico sugerido.
+        </ion-card-content>
+      </ion-card>
+      <ion-card [routerLink]="['/asignaturas-comun',idProgramaSelect]">
+        <ion-card-header>
+          <ion-card-title>Asignaturas en común</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>Con las asignaturas que has cursado y según tu perfil, puedes cursar un
+            multiple programa, con alguno de los siguientes programas de posgrado </ion-label>        
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+  </div>
+  <ion-button (click) = "porgramaSugePDF()">
+    Envia toda esta información a tu correo
+  </ion-button>
+</ion-content>

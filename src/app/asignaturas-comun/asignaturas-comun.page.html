@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+      [routerLink]="['/sub-menu-programa-suge',idPrograma]">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Avance Programa Sugerido</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estas son asignaturas que te sirven para ambos programas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> 
+      <ion-item-group *ngFor="let asignatura of asignaturasC">
+        <ion-item>
+          <ion-label>{{ asignatura.nombre }}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-card-content> 
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/home-directores">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Reporte de asignaturas</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Hola! Con el fin apoyar los procesos de evaluación de los programas de maestría, aquí puedes consultar 
+        la perspectiva de los estudiantes sobre las asignturas del programa.  
+      </ion-label>
+    </ion-item>
+    
+    <ion-label>Programa</ion-label>
+    <ion-item>
+      <ion-select
+        [(ngModel)]="programaSeleccionado">
+        <ion-select-option *ngFor="let item of programas" [value]="item.id">
+          {{ item.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-button expand="block" [routerLink]="['/reporte-final',programaSeleccionado]" (click)="consultar()">Consultar</ion-button>
+    <ion-button expand="block" (click)="enviarCorreo()">Enviar al correo</ion-button>
+  </div>
+
+</ion-content>

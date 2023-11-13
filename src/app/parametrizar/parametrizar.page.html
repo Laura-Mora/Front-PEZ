@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button
+        href="/home-directores">
+        <ion-icon
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Parametrizar el programa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Programa</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Seleccione el programa a parametrizar</ion-label>
+        <ion-item>
+          <ion-select
+            [(ngModel)]="programa">
+            <ion-select-option *ngFor="let item of programas" >
+              {{item}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Componentes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Seleccione el componente a editar</ion-label>
+        <ion-item>
+          <ion-select
+            [(ngModel)]="componente">
+            <ion-select-option *ngFor="let item of componentes" >
+              {{item}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Ejes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Seleccione el eje a editar</ion-label>
+        <ion-item>
+          <ion-select
+            [(ngModel)]="componente">
+            <ion-select-option *ngFor="let item of componentes" >
+              {{item}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Enfasis</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Seleccione el enfasis a editar</ion-label>
+        <ion-item>
+          <ion-select
+            [(ngModel)]="enfasis">
+            <ion-select-option *ngFor="let item of enfasis" >
+              {{item}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>Asignaturas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Seleccione las asignaturas obligatorias para el eje, componente o enfasis</ion-label>
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Seleccione asignaturas" [multiple]="true" [(ngModel)]="asignatura">
+              <ion-select-option *ngFor="let item of asignaturas">{{item}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <ion-label>Seleccione las asignaturas electivas para el eje, componente o enfasis</ion-label>
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Seleccione asignaturas" [multiple]="true" [(ngModel)]="asignatura">
+              <ion-select-option *ngFor="let item of asignaturas">{{item}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

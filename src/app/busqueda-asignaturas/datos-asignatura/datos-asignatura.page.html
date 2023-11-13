@@ -1,0 +1,234 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/busqueda-asignaturas']">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><div class="ion-text-wrap">Asignatura</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{asignaturaSelect.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item><ion-label>Complejidad: {{asignaturaSelect.complejidad}}</ion-label></ion-item>
+        <ion-item><ion-label>Créditos: {{asignaturaSelect.creditos}}</ion-label></ion-item>
+        <ion-item><ion-label>Población objetivo: {{asignaturaSelect.poblacionObjetivo}}</ion-label></ion-item>
+        <ion-item><ion-label>Horarios:</ion-label></ion-item>
+        <ion-item-group *ngFor="let hoario of asignaturaSelect.horarios">
+          <ion-item>
+            <ion-label>{{ hoario.dia }} {{ hoario.hora }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item><ion-label>Profesores</ion-label></ion-item>
+        <ion-item><ion-label>Temáticas</ion-label></ion-item>
+        <ion-item-group *ngFor="let tema of asignaturaSelect.tematicas">
+          <ion-item>
+            <ion-label>{{ tema.nombre }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item><ion-label>Competencias</ion-label></ion-item>
+        <ion-item-group *ngFor="let compe of asignaturaSelect.competencias">
+          <ion-item>
+            <ion-label>{{ compe.nombre }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item><ion-label>Actividades</ion-label></ion-item>
+        <ion-item-group *ngFor="let act of asignaturaSelect.actividades">
+          <ion-item>
+            <ion-label>{{ act.nombre }}</ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>Cuentanos tu opinión de la asignatura</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+          <ion-label>¿Considera que aprendió en la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="aprendizaje">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las temáticas abordadas cumplieron con lo que requería? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="tematicasAbordadas">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las estrategias pedagógicas llevadas por el profesor fueron de su agrado? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="estrategiasPedago">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Las actividades, propias de la asignatura, realizadas fueron de su agrado? (Ejm: Talleres, proyectos, parciales...) </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="actividadesAsig">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Que nivel de complejidad le asignaría la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="medio" [(ngModel)]="complejidad">
+              <ion-item>
+                <ion-label>Alto</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Medio</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Bajo</ion-label>
+                <ion-radio slot="end" value="bajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Fue de su agrado el profesor? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="agradoProfe">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿La asignatura le sirvió para la vida o para el trabajo? </ion-label>
+          <ion-list>
+            <ion-radio-group value="vida" [(ngModel)]="asignaturaVidaTrab">
+              <ion-item>
+                <ion-label>Vida</ion-label>
+                <ion-radio slot="end" value="vida"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Trabajo</ion-label>
+                <ion-radio slot="end" value="trabajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera que la carga de trabajo para la asignatura es adecuada? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="cargaTrabajo">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Que nivel de exigencia le asignaría a la asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="medio" [(ngModel)]="exigenciaAsig">
+              <ion-item>
+                <ion-label>Alto</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Medio</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Bajo</ion-label>
+                <ion-radio slot="end" value="bajo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera que las calificaciones fueron entregadas a tiempo? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="notasTiempo">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Considera oportuna la retroalimentación dada a las diferentes calificaciones obtenidas? </ion-label>
+          <ion-list>
+            <ion-radio-group value="true" [(ngModel)]="retroalimentacion">
+              <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio slot="end" value="true"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="end" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>¿Qué tanto incidió el profesor en la elección de esta asignatura? </ion-label>
+          <ion-list>
+            <ion-radio-group value="Mucho" [(ngModel)]="incidenciaProfe">
+              <ion-item>
+                <ion-label>Mucho</ion-label>
+                <ion-radio slot="end" value="alto"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Poco</ion-label>
+                <ion-radio slot="end" value="medio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Nada</ion-label>
+                <ion-radio slot="end" value="nada"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-label>Por favor deje un comentario sobre la asignatura, para que los demás estudiantes se puedan dar una guía de esta. </ion-label>
+          <ion-item>
+            <ion-input placeholder="Comentario" [(ngModel)]="comentarios"></ion-input>
+          </ion-item>
+          <ion-button (click) = "guardarOpinion()">
+            Guardar Opinion
+            <ion-icon  slot="start" name="star"></ion-icon>
+          </ion-button>
+      </ion-card-content>
+    </ion-card>  
+  </div>
+</ion-content>

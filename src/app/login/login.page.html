@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><div class="ion-text-wrap">login PEZ</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="home">
+    <!-- Logo -->
+    <div class="logo">
+      <img class="home_logo" src="../assets/logo/LogoPEZ.png">
+    </div>
+
+    <div class="form_registro_login">
+      <form>
+        <ion-item>
+          <ion-icon name="mail"> </ion-icon>
+          <ion-input
+            name="mail"
+            type="email"
+            placeholder="Ingresa tu correo"
+            [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key"> </ion-icon>
+          <ion-input
+            name="password"
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </form>
+    </div>
+    <div class="enter_btn">
+      <button class="myButton" (click)="onLogin()" href="/home">
+        Iniciar sesión
+      </button>
+    </div>
+    
+    <div class="center_text_login_registro" (click)="register()" href="/registro">
+      <div>¿No tienes una cuenta?</div>
+      <ion-button (click)="register()" href="/registro">
+        <strong>Registrate aquí.</strong>
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

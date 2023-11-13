@@ -1,0 +1,233 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><div class="ion-text-wrap">Formulario Personalización</div></ion-title>
+    <ion-button (click)="closeModal()" href="/home" >
+      Cerrar
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Hola! Con el fin de brindarte un mejor servicio te proponemos llenar este formulario con tus gustos
+        y preferencias. En caso de que no lo desees puedes darle click a "Cerrar".
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Cual es tu profesión?</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="profesion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿En que área te desempeñas?</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="areaDesempenio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Cual es el motivo por el que cursas este programa?</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="motivo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Eres egresado javeriano?</ion-label>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="true" [(ngModel)]="javeriano">
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="end" value="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="end" value="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>¿En cual semestre vas?</ion-label>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="0" [(ngModel)]="semestre">
+        <ion-item>
+          <ion-label>1</ion-label>
+          <ion-radio slot="end" value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>2</ion-label>
+          <ion-radio slot="end" value="2"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>3</ion-label>
+          <ion-radio slot="end" value="3"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>4 o más</ion-label>
+          <ion-radio slot="end" value="4"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>¿Ya completaste tu requisito de ingles?</ion-label>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="true" [(ngModel)]="ingles">
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="end" value="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="end" value="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate las siguientes asignaturas</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let asignatura of perfilEstudiante.asignaturasCursadas">
+      <ion-item>
+        <ion-label>{{ asignatura.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Asignaturas Cursadas</ion-label>
+    </ion-item>
+    
+    <ion-searchbar placeholder="Buscar asignatura..." animated (ionChange)="buscarAsignatura($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="asignaturasCursadas">
+        <ion-select-option *ngFor="let asignatura of asignaturas | filtroAsignatura: textoBuscar" [value]="asignatura.id">{{asignatura.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate las siguientes temáticas</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let tematica of perfilEstudiante.tematicasGusto">
+      <ion-item>
+        <ion-label>{{ tematica.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Temáticas</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar temática..."  animated (ionChange)="buscarTematica($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="tematicasUsuario">
+        <ion-select-option *ngFor="let tematica of tematicas | filtroTematica:tematicaBuscar" [value]="tematica.id">{{tematica.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate las siguientes competencias</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let compe of perfilEstudiante.competenciasGusto">
+      <ion-item>
+        <ion-label>{{ compe.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Competencias</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar competencias..."  animated (ionChange)="buscarCompetencia($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="competenciasUsuario">
+        <ion-select-option *ngFor="let competencia of competencias | filtroCompetencias: competenciaBuscar" [value]="competencia.id">{{competencia.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate las siguientes actividades</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let acti of perfilEstudiante.actividadesGusto">
+      <ion-item>
+        <ion-label>{{ acti.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Actividades</ion-label>
+    </ion-item>
+    <ion-searchbar placeholder="Buscar actividades..."  animated (ionChange)="buscarActividades($event)"></ion-searchbar>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="actividadesUsuario">
+        <ion-select-option *ngFor="let actividad of actividades | filtroActividades:actividadBuscar" [value]="actividad.id">
+          {{actividad.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate los siguientes horarios</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let hoario of perfilEstudiante.horariosPreferencias">
+      <ion-item>
+        <ion-label>{{ hoario.dia }} {{ hoario.hora }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item>
+      <ion-label>Horarios</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="horariosUsuario">
+        <ion-select-option *ngFor="let horario of horarios" [value]="horario.id">{{horario.dia}}{{horario.hora}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate las siguientes modalidades</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let modalidad of perfilEstudiante.modalidadPreferencia">
+      <ion-item>
+        <ion-label>{{ modalidad.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label>Modalidad</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="modalidadUsuario">
+        <ion-select-option *ngFor="let compo of componentesClase" [value]="compo.id">{{compo.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anteriormente seleccionate los siguientes modos de enseñanza</ion-label>
+    </ion-item>
+
+    <ion-item-group *ngFor="let modo of perfilEstudiante.modoEnsenianzaPreferencia">
+      <ion-item>
+        <ion-label>{{ modo.nombre }}</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item>
+      <ion-label>Modo Enseñanza</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-select multiple [(ngModel)]="modosUsuario">
+        <ion-select-option *ngFor="let modo of modos" [value]="modo.id">{{modo.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
+  </div>
+</ion-content>

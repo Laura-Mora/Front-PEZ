@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title><div class="ion-text-wrap">Servicios pez</div></ion-title>
+    <ion-buttons class="header_btn"
+                 slot="secondary">
+      <ion-button (click)="logout()"
+      href="/login">
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="content">
+    <ion-list>
+      <ion-card href="/suge-asignaturas">
+        <ion-card-header>
+          <ion-card-title>Sugerencias Asignaturas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Con el fin de facilitar tu proceso a la hora de elegir cuales asignaturas cursar aquí encontrarás algunas de los asignaturas 
+          que se ajusten a tus gustos y preferencias.
+        </ion-card-content>
+      </ion-card>
+      <ion-card href="/sub-menu-avance-programa">
+        <ion-card-header>
+          <ion-card-title>Información programas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Conoce tu informe de avance en el programa, al igual que la posibilidad de multiples programas.
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
   </div>
 </ion-content>
